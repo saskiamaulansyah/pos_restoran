@@ -16,6 +16,8 @@ public class Pos_restoran {
      */
     public static void main(String[] args) {
         // TODO code application logic here
+        login_page login = new login_page();
+        login.setVisible(true);
     }
     
 }

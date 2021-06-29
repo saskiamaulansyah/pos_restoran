@@ -5,21 +5,43 @@
  */
 package pos_restoran.Dishess;
 
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 import pos_restoran.Dashboard.*;
+import pos_restoran.DbConnection;
+import pos_restoran.MenuNavigation;
 
 
 /**
  *
  * @author User
  */
-public class DishessList extends javax.swing.JFrame {
+public class DishesList extends javax.swing.JFrame {
 
     /**
      * Creates new form AdminDashboard
      */
+    
+    private Connection con;
+    private Statement statment;
+    private MenuNavigation menuNav;
 
-    public DishessList() {
+    public DishesList() {
         initComponents();
+        
+        // connection DB
+        DbConnection DB = new DbConnection();
+        DB.Connect();
+        con = DB.conn;
+        statment = DB.stmt;
+        
+        this.menuNav = new MenuNavigation();
+        
+        loadData();
     }
 
     /**
@@ -34,7 +56,7 @@ public class DishessList extends javax.swing.JFrame {
         kGradientPanel1 = new keeptoo.KGradientPanel();
         logo = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
+        mnDashboard = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
@@ -43,7 +65,7 @@ public class DishessList extends javax.swing.JFrame {
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        menuTableList = new javax.swing.JTable();
         btnAddnew = new javax.swing.JButton();
         btnReport = new javax.swing.JButton();
 
@@ -59,9 +81,14 @@ public class DishessList extends javax.swing.JFrame {
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pos_restoran/images/ic_home_blong.png"))); // NOI18N
 
-        jLabel2.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setText("Dashboard");
+        mnDashboard.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
+        mnDashboard.setForeground(new java.awt.Color(255, 255, 255));
+        mnDashboard.setText("Dashboard");
+        mnDashboard.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                mnDashboardMouseClicked(evt);
+            }
+        });
 
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pos_restoran/images/ic_order.png"))); // NOI18N
@@ -94,7 +121,7 @@ public class DishessList extends javax.swing.JFrame {
                     .addGroup(kGradientPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jLabel2))
+                        .addComponent(mnDashboard))
                     .addGroup(kGradientPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel3)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -118,7 +145,7 @@ public class DishessList extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(kGradientPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel1)
-                    .addComponent(jLabel2))
+                    .addComponent(mnDashboard))
                 .addGap(21, 21, 21)
                 .addGroup(kGradientPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel3)
@@ -137,26 +164,26 @@ public class DishessList extends javax.swing.JFrame {
         jLabel9.setFont(new java.awt.Font("Calibri", 0, 24)); // NOI18N
         jLabel9.setText("Dishess List");
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        menuTableList.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null}
             },
             new String [] {
-                "No", "Dish Name", "Description", "Price", "Type"
+                "ID", "Dish Name", "Description", "Price", "Type", "Status"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
 
             public Class getColumnClass(int columnIndex) {
                 return types [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(menuTableList);
 
         btnAddnew.setText("Add New");
         btnAddnew.addActionListener(new java.awt.event.ActionListener() {
@@ -207,8 +234,13 @@ public class DishessList extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAddnewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddnewActionPerformed
-        // TODO add your handling code here:
+        // redirect to create
+        menuNav.createDish(this);
     }//GEN-LAST:event_btnAddnewActionPerformed
+
+    private void mnDashboardMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mnDashboardMouseClicked
+        menuNav.adminDashboard(this);
+    }//GEN-LAST:event_mnDashboardMouseClicked
 
     /**
      * @param args the command line arguments
@@ -227,14 +259,18 @@ public class DishessList extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(DishessList.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(DishesList.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(DishessList.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(DishesList.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(DishessList.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(DishesList.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(DishessList.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(DishesList.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -243,16 +279,48 @@ public class DishessList extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new DishessList().setVisible(true);
+                new DishesList().setVisible(true);
             }
         });
+    }
+    
+    private void loadData()
+    {
+        try {
+            DefaultTableModel model = (DefaultTableModel) menuTableList.getModel();
+            // clear data
+            model.setRowCount(0);
+            String selectQuery = "SELECT * FROM menu";
+            ResultSet result = statment.executeQuery(selectQuery);
+            while (result.next())
+            {
+                model.addRow(new Object[]
+                {
+                    result.getInt("id_menu"),
+                    result.getString("menu"),
+                    result.getString("deskripsi"),
+                    "Rp " + result.getInt("harga"),
+                    result.getString("tipe"),
+                    setStatus(result.getInt("is_available"))
+                });
+                
+                menuTableList.setModel(model);
+            }
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(this, ex.getMessage());
+        }
+    }
+    
+    private String setStatus(int isAvailable)
+    {
+        if (isAvailable == 1) return "Available";
+        return "UnAvailable";
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAddnew;
     private javax.swing.JButton btnReport;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -261,8 +329,9 @@ public class DishessList extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
     private keeptoo.KGradientPanel kGradientPanel1;
     private javax.swing.JLabel logo;
+    private javax.swing.JTable menuTableList;
+    private javax.swing.JLabel mnDashboard;
     // End of variables declaration//GEN-END:variables
 }

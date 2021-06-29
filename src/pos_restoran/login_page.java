@@ -14,8 +14,13 @@ public class login_page extends javax.swing.JFrame {
     /**
      * Creates new form login_page
      */
+    
+    private MenuNavigation menuNav;
+    
     public login_page() {
         initComponents();
+        
+        this.menuNav = new MenuNavigation();
     }
 
     /**
@@ -28,18 +33,32 @@ public class login_page extends javax.swing.JFrame {
     private void initComponents() {
 
         kGradientPanel1 = new keeptoo.KGradientPanel();
+        btnLogin = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        btnLogin.setText("Login");
+        btnLogin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLoginActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout kGradientPanel1Layout = new javax.swing.GroupLayout(kGradientPanel1);
         kGradientPanel1.setLayout(kGradientPanel1Layout);
         kGradientPanel1Layout.setHorizontalGroup(
             kGradientPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 710, Short.MAX_VALUE)
+            .addGroup(kGradientPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(btnLogin)
+                .addContainerGap(643, Short.MAX_VALUE))
         );
         kGradientPanel1Layout.setVerticalGroup(
             kGradientPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 434, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, kGradientPanel1Layout.createSequentialGroup()
+                .addContainerGap(400, Short.MAX_VALUE)
+                .addComponent(btnLogin)
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -55,6 +74,10 @@ public class login_page extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
+        this.menuNav.adminDashboard(this);
+    }//GEN-LAST:event_btnLoginActionPerformed
 
     /**
      * @param args the command line arguments
@@ -92,6 +115,7 @@ public class login_page extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnLogin;
     private keeptoo.KGradientPanel kGradientPanel1;
     // End of variables declaration//GEN-END:variables
 }

@@ -5,6 +5,8 @@
  */
 package pos_restoran.Dashboard;
 
+import pos_restoran.MenuNavigation;
+
 
 /**
  *
@@ -16,8 +18,12 @@ public class AdminDashboard extends javax.swing.JFrame {
      * Creates new form AdminDashboard
      */
 
+    private MenuNavigation menuNav;
+    
     public AdminDashboard() {
         initComponents();
+        
+        this.menuNav = new MenuNavigation();
     }
 
     /**
@@ -79,6 +85,11 @@ public class AdminDashboard extends javax.swing.JFrame {
         nmDishesList.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
         nmDishesList.setForeground(new java.awt.Color(255, 255, 255));
         nmDishesList.setText("Dishes List");
+        nmDishesList.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                nmDishesListMouseClicked(evt);
+            }
+        });
 
         jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pos_restoran/images/ic_serving-dish.png"))); // NOI18N
@@ -187,7 +198,7 @@ public class AdminDashboard extends javax.swing.JFrame {
 
         jumlahOrder3.setBackground(new java.awt.Color(255, 255, 255));
         jumlahOrder3.setPreferredSize(new java.awt.Dimension(200, 200));
-        jumlahOrder3.setLayout(new java.awt.GridLayout());
+        jumlahOrder3.setLayout(new java.awt.GridLayout(1, 0));
 
         totalBill.setFont(new java.awt.Font("Calibri", 0, 30)); // NOI18N
         totalBill.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -243,6 +254,10 @@ public class AdminDashboard extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void nmDishesListMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_nmDishesListMouseClicked
+        this.menuNav.dishList(this);
+    }//GEN-LAST:event_nmDishesListMouseClicked
 
     /**
      * @param args the command line arguments
