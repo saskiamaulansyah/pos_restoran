@@ -183,6 +183,11 @@ public class DishesList extends javax.swing.JFrame {
                 return types [columnIndex];
             }
         });
+        menuTableList.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                menuTableListMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(menuTableList);
 
         btnAddnew.setText("Add New");
@@ -241,6 +246,17 @@ public class DishesList extends javax.swing.JFrame {
     private void mnDashboardMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mnDashboardMouseClicked
         menuNav.adminDashboard(this);
     }//GEN-LAST:event_mnDashboardMouseClicked
+
+    private void menuTableListMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menuTableListMouseClicked
+        
+        int baris = menuTableList.rowAtPoint(evt.getPoint());
+        
+        CreateDishes createDish = new CreateDishes();
+        createDish.setData(menuTableList, baris);
+        
+        menuNav.openMenuWithData(this , createDish);
+        
+    }//GEN-LAST:event_menuTableListMouseClicked
 
     /**
      * @param args the command line arguments

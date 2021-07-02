@@ -11,6 +11,7 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.Statement;
 import javax.swing.JOptionPane;
+import javax.swing.JTable;
 import pos_restoran.Dashboard.*;
 import pos_restoran.DbConnection;
 import pos_restoran.MenuNavigation;
@@ -29,6 +30,7 @@ public class CreateDishes extends javax.swing.JFrame {
     private Connection con;
     private Statement statment;
     private MenuNavigation menuNav;
+    private int dishId;
 
     public CreateDishes() {
         initComponents();
@@ -42,6 +44,8 @@ public class CreateDishes extends javax.swing.JFrame {
         // init button group
         statusGroup.add(rdAvailable);
         statusGroup.add(rdUnAvailable);
+        btnUpdate.setVisible(false);
+        btnDelete.setVisible(false);
         
         // init class
         this.menuNav = new MenuNavigation();
@@ -67,7 +71,7 @@ public class CreateDishes extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
+        createTitle = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jLabel11 = new javax.swing.JLabel();
         dishName = new javax.swing.JTextField();
@@ -186,8 +190,8 @@ public class CreateDishes extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jLabel9.setFont(new java.awt.Font("Calibri", 0, 24)); // NOI18N
-        jLabel9.setText("Create Dish");
+        createTitle.setFont(new java.awt.Font("Calibri", 0, 24)); // NOI18N
+        createTitle.setText("Create Dish");
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -301,8 +305,18 @@ public class CreateDishes extends javax.swing.JFrame {
         btnClear.setText("Clear");
 
         btnUpdate.setText("Update");
+        btnUpdate.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnUpdateActionPerformed(evt);
+            }
+        });
 
         btnDelete.setText("Delete");
+        btnDelete.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDeleteActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -342,7 +356,7 @@ public class CreateDishes extends javax.swing.JFrame {
                 .addComponent(kGradientPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel9)
+                    .addComponent(createTitle)
                     .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 43, Short.MAX_VALUE)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -353,7 +367,7 @@ public class CreateDishes extends javax.swing.JFrame {
             .addComponent(kGradientPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel9)
+                .addComponent(createTitle)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
@@ -388,6 +402,18 @@ public class CreateDishes extends javax.swing.JFrame {
     private void mnDishesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mnDishesMouseClicked
         menuNav.dishList(this);
     }//GEN-LAST:event_mnDishesMouseClicked
+
+    private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
+        update();
+    }//GEN-LAST:event_btnUpdateActionPerformed
+
+    private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
+        int option = JOptionPane.showConfirmDialog(this, "Yakin ingin menghapus data");
+        if (option == 0)
+        {
+            delete();
+        }
+    }//GEN-LAST:event_btnDeleteActionPerformed
 
     /**
      * @param args the command line arguments
@@ -441,6 +467,34 @@ public class CreateDishes extends javax.swing.JFrame {
     
     // process function
     
+    public void setData(JTable menuTableList, int row)
+    {
+        dishId = Integer.parseInt(menuTableList.getValueAt(row, 0).toString());
+        
+        dishName.setText(menuTableList.getValueAt(row, 1).toString());
+        description.setText(menuTableList.getValueAt(row, 2).toString());
+        String[] splitPrice = menuTableList.getValueAt(row, 3).toString().split(" ");
+        price.setText(splitPrice[1]);
+        slcType.setSelectedItem(menuTableList.getValueAt(row, 4).toString());
+        
+        String status = menuTableList.getValueAt(row, 5).toString();
+        if (status.equals("Available"))
+        {
+            rdAvailable.setSelected(true);
+        }
+        if (status.equals("UnAvailable"))
+        {
+            rdUnAvailable.setSelected(true);
+        }
+        
+        btnUpdate.setVisible(true);
+        btnDelete.setVisible(true);
+        
+        btnCreate.setVisible(false);
+        btnClear.setVisible(false);
+        createTitle.setText("Update Dish");
+    }
+    
     
     private void create()
     {
@@ -460,7 +514,57 @@ public class CreateDishes extends javax.swing.JFrame {
             
             PreparedStatement prepare = con.prepareStatement(insertQuery);
             prepare.execute();
-            JOptionPane.showMessageDialog(this, "Sukses Menyimpan Customer");
+            JOptionPane.showMessageDialog(this, "Sukses Menyimpan Dish");
+            
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(this, ex.getMessage());
+            System.err.println(ex.getMessage());
+        }
+    }
+    
+    private void update()
+    {
+        try {
+            rdAvailable.setActionCommand("1");
+            rdUnAvailable.setActionCommand("0");
+            
+            Object type = slcType.getSelectedItem();
+            String status = statusGroup.getSelection().getActionCommand();
+
+            String insertQuery = "UPDATE menu SET "
+                    + "menu='" + dishName.getText() + "',"
+                    + "harga='" + price.getText() + "',"
+                    + "deskripsi='" + description.getText() + "',"
+                    + "is_available='" + status + "',"
+                    + "tipe='" + type + "'"
+                    + "WHERE id_menu = '" + dishId + "'";
+            System.out.println("SQL QUERY : " + insertQuery);
+            
+            PreparedStatement prepare = con.prepareStatement(insertQuery);
+            prepare.execute();
+            JOptionPane.showMessageDialog(this, "Sukses Merubah Data Dish");
+            
+            System.out.println(insertQuery);
+            
+            menuNav.dishList(this);
+            
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(this, ex.getMessage());
+            System.err.println(ex.getMessage());
+        }
+    }
+    
+    private void delete()
+    {
+        try {
+
+            String insertQuery = "DELETE from menu WHERE id_menu='" + dishId + "'";
+            
+            PreparedStatement prepare = con.prepareStatement(insertQuery);
+            prepare.execute();
+            JOptionPane.showMessageDialog(this, "Sukses Mengpus Data");
+            
+            menuNav.dishList(this);
             
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(this, ex.getMessage());
@@ -473,6 +577,7 @@ public class CreateDishes extends javax.swing.JFrame {
     private javax.swing.JButton btnCreate;
     private javax.swing.JButton btnDelete;
     private javax.swing.JButton btnUpdate;
+    private javax.swing.JLabel createTitle;
     private javax.swing.JTextArea description;
     private javax.swing.JTextField dishName;
     private javax.swing.JLabel jLabel1;
@@ -488,7 +593,6 @@ public class CreateDishes extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;

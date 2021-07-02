@@ -6,6 +6,7 @@
 package pos_restoran;
 
 import java.awt.Window;
+import javax.swing.JFrame;
 import pos_restoran.Dashboard.AdminDashboard;
 import pos_restoran.Dishess.CreateDishes;
 import pos_restoran.Dishess.DishesList;
@@ -31,6 +32,13 @@ public class MenuNavigation {
     public void createDish(Window current){
         CreateDishes dishList = new CreateDishes();
         dishList.setVisible(true);
+        current.setVisible(false);
+    }
+    
+    // redirect to other jForm with data carier
+    public void openMenuWithData(Window current , JFrame nextFrame)
+    {
+        nextFrame.setVisible(true);
         current.setVisible(false);
     }
     
