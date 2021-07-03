@@ -3,8 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package pos_restoran.Dishess;
+package pos_restoran.Meja;
 
+import pos_restoran.Dishess.*;
 import java.awt.CardLayout;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -21,7 +22,7 @@ import pos_restoran.MenuNavigation;
  *
  * @author User
  */
-public class CreateDishes extends javax.swing.JFrame {
+public class CreateMeja extends javax.swing.JFrame {
 
     /**
      * Creates new form AdminDashboard
@@ -30,9 +31,9 @@ public class CreateDishes extends javax.swing.JFrame {
     private Connection con;
     private Statement statment;
     private MenuNavigation menuNav;
-    private int dishId;
+    private int mejaId;
 
-    public CreateDishes() {
+    public CreateMeja() {
         initComponents();
         
         // connection DB
@@ -70,19 +71,12 @@ public class CreateDishes extends javax.swing.JFrame {
         mnDishes = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
+        mnMeja = new javax.swing.JLabel();
         createTitle = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jLabel11 = new javax.swing.JLabel();
-        dishName = new javax.swing.JTextField();
+        noMeja = new javax.swing.JTextField();
         jLabel12 = new javax.swing.JLabel();
-        jLabel13 = new javax.swing.JLabel();
-        jLabel14 = new javax.swing.JLabel();
-        price = new javax.swing.JTextField();
-        jLabel15 = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        description = new javax.swing.JTextArea();
-        slcType = new javax.swing.JComboBox<>();
         rdAvailable = new javax.swing.JRadioButton();
         jLabel16 = new javax.swing.JLabel();
         rdUnAvailable = new javax.swing.JRadioButton();
@@ -136,12 +130,12 @@ public class CreateDishes extends javax.swing.JFrame {
         jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pos_restoran/images/table.png"))); // NOI18N
 
-        jLabel8.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
-        jLabel8.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel8.setText("Meja");
-        jLabel8.addMouseListener(new java.awt.event.MouseAdapter() {
+        mnMeja.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
+        mnMeja.setForeground(new java.awt.Color(255, 255, 255));
+        mnMeja.setText("Meja");
+        mnMeja.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel8MouseClicked(evt);
+                mnMejaMouseClicked(evt);
             }
         });
 
@@ -155,7 +149,7 @@ public class CreateDishes extends javax.swing.JFrame {
                     .addGroup(kGradientPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel7)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jLabel8))
+                        .addComponent(mnMeja))
                     .addGroup(kGradientPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -193,40 +187,21 @@ public class CreateDishes extends javax.swing.JFrame {
                     .addGroup(kGradientPanel1Layout.createSequentialGroup()
                         .addGap(3, 3, 3)
                         .addComponent(jLabel7))
-                    .addComponent(jLabel8))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(mnMeja))
+                .addContainerGap(270, Short.MAX_VALUE))
         );
 
         createTitle.setFont(new java.awt.Font("Calibri", 0, 24)); // NOI18N
-        createTitle.setText("Create Dish");
+        createTitle.setText("Create Meja");
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
-        jLabel11.setText("Form Dish");
+        jLabel11.setText("Form Meja");
 
-        dishName.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        noMeja.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
 
         jLabel12.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel12.setText("Nama Hidangan");
-
-        jLabel13.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel13.setText("Deskripsi");
-
-        jLabel14.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel14.setText("Harga");
-
-        price.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-
-        jLabel15.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel15.setText("Type");
-
-        description.setColumns(20);
-        description.setFont(new java.awt.Font("Monospaced", 0, 14)); // NOI18N
-        description.setRows(5);
-        jScrollPane1.setViewportView(description);
-
-        slcType.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        slcType.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Appetizer", "Main Course", "Dessert" }));
+        jLabel12.setText("Nomor Meja");
 
         rdAvailable.setText("Available");
         rdAvailable.addActionListener(new java.awt.event.ActionListener() {
@@ -238,7 +213,7 @@ public class CreateDishes extends javax.swing.JFrame {
         jLabel16.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel16.setText("Status");
 
-        rdUnAvailable.setText("UnAvailable");
+        rdUnAvailable.setText("Booked");
         rdUnAvailable.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 rdUnAvailableActionPerformed(evt);
@@ -252,22 +227,16 @@ public class CreateDishes extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(dishName, javax.swing.GroupLayout.PREFERRED_SIZE, 271, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(noMeja, javax.swing.GroupLayout.PREFERRED_SIZE, 271, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel11)
                     .addComponent(jLabel12)
-                    .addComponent(jLabel13)
-                    .addComponent(jLabel15)
-                    .addComponent(jLabel14)
-                    .addComponent(price, javax.swing.GroupLayout.PREFERRED_SIZE, 271, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 411, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(slcType, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel16)
                         .addGap(18, 18, 18)
                         .addComponent(rdAvailable)
                         .addGap(18, 18, 18)
                         .addComponent(rdUnAvailable)))
-                .addContainerGap(65, Short.MAX_VALUE))
+                .addContainerGap(205, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -277,25 +246,13 @@ public class CreateDishes extends javax.swing.JFrame {
                 .addGap(21, 21, 21)
                 .addComponent(jLabel12)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(dishName, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(21, 21, 21)
-                .addComponent(jLabel13)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(21, 21, 21)
-                .addComponent(jLabel14)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(price, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(noMeja, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(rdAvailable)
                     .addComponent(jLabel16)
                     .addComponent(rdUnAvailable))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel15)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(slcType, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(20, 20, 20))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
@@ -379,7 +336,7 @@ public class CreateDishes extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 247, Short.MAX_VALUE))
+                        .addGap(0, 238, Short.MAX_VALUE))
                     .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
@@ -390,7 +347,7 @@ public class CreateDishes extends javax.swing.JFrame {
     private void btnCreateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateActionPerformed
         create();
         // redirect to dish menu
-        this.menuNav.dishList(this);
+        menuNav.mejaList(this);
     }//GEN-LAST:event_btnCreateActionPerformed
 
     private void rdAvailableActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rdAvailableActionPerformed
@@ -412,7 +369,7 @@ public class CreateDishes extends javax.swing.JFrame {
 
     private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
         update();
-        menuNav.dishList(this);
+        menuNav.mejaList(this);
     }//GEN-LAST:event_btnUpdateActionPerformed
 
     private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
@@ -420,13 +377,12 @@ public class CreateDishes extends javax.swing.JFrame {
         if (option == 0)
         {
             delete();
-            menuNav.dishList(this);
         }
     }//GEN-LAST:event_btnDeleteActionPerformed
 
-    private void jLabel8MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel8MouseClicked
+    private void mnMejaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mnMejaMouseClicked
         menuNav.mejaList(this);
-    }//GEN-LAST:event_jLabel8MouseClicked
+    }//GEN-LAST:event_mnMejaMouseClicked
 
     /**
      * @param args the command line arguments
@@ -445,14 +401,30 @@ public class CreateDishes extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(CreateDishes.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CreateMeja.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(CreateDishes.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CreateMeja.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(CreateDishes.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CreateMeja.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(CreateDishes.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CreateMeja.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -473,7 +445,7 @@ public class CreateDishes extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new CreateDishes().setVisible(true);
+                new CreateMeja().setVisible(true);
             }
         });
     }
@@ -482,20 +454,16 @@ public class CreateDishes extends javax.swing.JFrame {
     
     public void setData(JTable menuTableList, int row)
     {
-        dishId = Integer.parseInt(menuTableList.getValueAt(row, 0).toString());
+        mejaId = Integer.parseInt(menuTableList.getValueAt(row, 0).toString());
         
-        dishName.setText(menuTableList.getValueAt(row, 1).toString());
-        description.setText(menuTableList.getValueAt(row, 2).toString());
-        String[] splitPrice = menuTableList.getValueAt(row, 3).toString().split(" ");
-        price.setText(splitPrice[1]);
-        slcType.setSelectedItem(menuTableList.getValueAt(row, 4).toString());
+        noMeja.setText(menuTableList.getValueAt(row, 1).toString());
         
-        String status = menuTableList.getValueAt(row, 5).toString();
-        if (status.equals("Available"))
+        String status = menuTableList.getValueAt(row, 2).toString();
+        if (status.equals("available"))
         {
             rdAvailable.setSelected(true);
         }
-        if (status.equals("UnAvailable"))
+        if (status.equals("booked"))
         {
             rdUnAvailable.setSelected(true);
         }
@@ -512,22 +480,18 @@ public class CreateDishes extends javax.swing.JFrame {
     private void create()
     {
         try {
-            rdAvailable.setActionCommand("1");
-            rdUnAvailable.setActionCommand("0");
+            rdAvailable.setActionCommand("available");
+            rdUnAvailable.setActionCommand("booked");
             
-            Object type = slcType.getSelectedItem();
             String status = statusGroup.getSelection().getActionCommand();
 
-            String insertQuery = "INSERT INTO menu VALUES ('0','"
-                    + dishName.getText() + "', "
-                    + price.getText() + " ,'"
-                    + description.getText() + "', "
-                    + status + " ,'"
-                    + type + "')";
+            String insertQuery = "INSERT INTO meja VALUES ('0','"
+                    + noMeja.getText() + "','"
+                    + status + "')";
             
             PreparedStatement prepare = con.prepareStatement(insertQuery);
             prepare.execute();
-            JOptionPane.showMessageDialog(this, "Sukses Menyimpan Dish");
+            JOptionPane.showMessageDialog(this, "Sukses Menyimpan Data Meja");
             
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(this, ex.getMessage());
@@ -538,26 +502,23 @@ public class CreateDishes extends javax.swing.JFrame {
     private void update()
     {
         try {
-            rdAvailable.setActionCommand("1");
-            rdUnAvailable.setActionCommand("0");
+            rdAvailable.setActionCommand("available");
+            rdUnAvailable.setActionCommand("booked");
             
-            Object type = slcType.getSelectedItem();
             String status = statusGroup.getSelection().getActionCommand();
 
-            String insertQuery = "UPDATE menu SET "
-                    + "menu='" + dishName.getText() + "',"
-                    + "harga='" + price.getText() + "',"
-                    + "deskripsi='" + description.getText() + "',"
-                    + "is_available='" + status + "',"
-                    + "tipe='" + type + "'"
-                    + "WHERE id_menu = '" + dishId + "'";
+            String insertQuery = "UPDATE meja SET "
+                    + "no_meja='" + noMeja.getText() + "',"
+                    + "status='" + status + "'"
+                    + "WHERE id_meja = '" + mejaId + "'";
             System.out.println("SQL QUERY : " + insertQuery);
             
             PreparedStatement prepare = con.prepareStatement(insertQuery);
             prepare.execute();
-            JOptionPane.showMessageDialog(this, "Sukses Merubah Data Dish");
+            JOptionPane.showMessageDialog(this, "Sukses Merubah Data Meja");
             
             System.out.println(insertQuery);
+            
             
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(this, ex.getMessage());
@@ -569,12 +530,14 @@ public class CreateDishes extends javax.swing.JFrame {
     {
         try {
 
-            String insertQuery = "DELETE from menu WHERE id_menu='" + dishId + "'";
+            String insertQuery = "DELETE from meja WHERE id_meja='" + mejaId + "'";
             
             PreparedStatement prepare = con.prepareStatement(insertQuery);
             prepare.execute();
-            JOptionPane.showMessageDialog(this, "Sukses Mengpus Data");
-                        
+            JOptionPane.showMessageDialog(this, "Sukses Mengpus Data Meja");
+            
+            menuNav.dishList(this);
+            
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(this, ex.getMessage());
             System.err.println(ex.getMessage());
@@ -587,32 +550,25 @@ public class CreateDishes extends javax.swing.JFrame {
     private javax.swing.JButton btnDelete;
     private javax.swing.JButton btnUpdate;
     private javax.swing.JLabel createTitle;
-    private javax.swing.JTextArea description;
-    private javax.swing.JTextField dishName;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel13;
-    private javax.swing.JLabel jLabel14;
-    private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JScrollPane jScrollPane1;
     private keeptoo.KGradientPanel kGradientPanel1;
     private javax.swing.JLabel logo;
     private javax.swing.JLabel mnDashboard;
     private javax.swing.JLabel mnDishes;
-    private javax.swing.JTextField price;
+    private javax.swing.JLabel mnMeja;
+    private javax.swing.JTextField noMeja;
     private javax.swing.JRadioButton rdAvailable;
     private javax.swing.JRadioButton rdUnAvailable;
-    private javax.swing.JComboBox<String> slcType;
     private javax.swing.ButtonGroup statusGroup;
     // End of variables declaration//GEN-END:variables
 }

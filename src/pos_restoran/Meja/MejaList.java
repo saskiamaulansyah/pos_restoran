@@ -3,8 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package pos_restoran.Dishess;
+package pos_restoran.Meja;
 
+import pos_restoran.Dishess.*;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -20,7 +21,7 @@ import pos_restoran.MenuNavigation;
  *
  * @author User
  */
-public class DishesList extends javax.swing.JFrame {
+public class MejaList extends javax.swing.JFrame {
 
     /**
      * Creates new form AdminDashboard
@@ -30,7 +31,7 @@ public class DishesList extends javax.swing.JFrame {
     private Statement statment;
     private MenuNavigation menuNav;
 
-    public DishesList() {
+    public MejaList() {
         initComponents();
         
         // connection DB
@@ -59,13 +60,13 @@ public class DishesList extends javax.swing.JFrame {
         mnDashboard = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
+        mnDish = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
+        mnMeja = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        menuTableList = new javax.swing.JTable();
+        mejaTableList = new javax.swing.JTable();
         btnAddnew = new javax.swing.JButton();
         btnReport = new javax.swing.JButton();
 
@@ -97,9 +98,14 @@ public class DishesList extends javax.swing.JFrame {
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Order List");
 
-        jLabel5.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel5.setText("Dishes List");
+        mnDish.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
+        mnDish.setForeground(new java.awt.Color(255, 255, 255));
+        mnDish.setText("Dishes List");
+        mnDish.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                mnDishMouseClicked(evt);
+            }
+        });
 
         jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pos_restoran/images/ic_serving-dish.png"))); // NOI18N
@@ -107,14 +113,9 @@ public class DishesList extends javax.swing.JFrame {
         jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pos_restoran/images/table.png"))); // NOI18N
 
-        jLabel8.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
-        jLabel8.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel8.setText("Meja");
-        jLabel8.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel8MouseClicked(evt);
-            }
-        });
+        mnMeja.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
+        mnMeja.setForeground(new java.awt.Color(255, 255, 255));
+        mnMeja.setText("Meja");
 
         javax.swing.GroupLayout kGradientPanel1Layout = new javax.swing.GroupLayout(kGradientPanel1);
         kGradientPanel1.setLayout(kGradientPanel1Layout);
@@ -126,7 +127,7 @@ public class DishesList extends javax.swing.JFrame {
                     .addGroup(kGradientPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel7)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jLabel8))
+                        .addComponent(mnMeja))
                     .addGroup(kGradientPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -138,7 +139,7 @@ public class DishesList extends javax.swing.JFrame {
                     .addGroup(kGradientPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel6)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jLabel5))
+                        .addComponent(mnDish))
                     .addComponent(logo))
                 .addContainerGap(22, Short.MAX_VALUE))
         );
@@ -158,44 +159,44 @@ public class DishesList extends javax.swing.JFrame {
                 .addGap(21, 21, 21)
                 .addGroup(kGradientPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel6)
-                    .addComponent(jLabel5))
+                    .addComponent(mnDish))
                 .addGap(18, 18, 18)
                 .addGroup(kGradientPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(kGradientPanel1Layout.createSequentialGroup()
                         .addGap(3, 3, 3)
                         .addComponent(jLabel7))
-                    .addComponent(jLabel8))
+                    .addComponent(mnMeja))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jLabel9.setFont(new java.awt.Font("Calibri", 0, 24)); // NOI18N
-        jLabel9.setText("Dishess List");
+        jLabel9.setText("Meja List");
 
-        menuTableList.setModel(new javax.swing.table.DefaultTableModel(
+        mejaTableList.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null}
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null}
             },
             new String [] {
-                "ID", "Dish Name", "Description", "Price", "Type", "Status"
+                "ID", "Nomor Meja", "Status"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+                java.lang.Integer.class, java.lang.String.class, java.lang.String.class
             };
 
             public Class getColumnClass(int columnIndex) {
                 return types [columnIndex];
             }
         });
-        menuTableList.addMouseListener(new java.awt.event.MouseAdapter() {
+        mejaTableList.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                menuTableListMouseClicked(evt);
+                mejaTableListMouseClicked(evt);
             }
         });
-        jScrollPane1.setViewportView(menuTableList);
+        jScrollPane1.setViewportView(mejaTableList);
 
         btnAddnew.setText("Add New");
         btnAddnew.addActionListener(new java.awt.event.ActionListener() {
@@ -247,27 +248,27 @@ public class DishesList extends javax.swing.JFrame {
 
     private void btnAddnewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddnewActionPerformed
         // redirect to create
-        menuNav.createDish(this);
+        menuNav.createMeja(this);
     }//GEN-LAST:event_btnAddnewActionPerformed
 
     private void mnDashboardMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mnDashboardMouseClicked
         menuNav.adminDashboard(this);
     }//GEN-LAST:event_mnDashboardMouseClicked
 
-    private void menuTableListMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menuTableListMouseClicked
+    private void mejaTableListMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mejaTableListMouseClicked
         
-        int baris = menuTableList.rowAtPoint(evt.getPoint());
+        int baris = mejaTableList.rowAtPoint(evt.getPoint());
         
-        CreateDishes createDish = new CreateDishes();
-        createDish.setData(menuTableList, baris);
+        CreateMeja createMeja = new CreateMeja();
+        createMeja.setData(mejaTableList, baris);
         
-        menuNav.openMenuWithData(this , createDish);
+        menuNav.openMenuWithData(this , createMeja);
         
-    }//GEN-LAST:event_menuTableListMouseClicked
+    }//GEN-LAST:event_mejaTableListMouseClicked
 
-    private void jLabel8MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel8MouseClicked
-        menuNav.mejaList(this);
-    }//GEN-LAST:event_jLabel8MouseClicked
+    private void mnDishMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mnDishMouseClicked
+        menuNav.dishList(this);
+    }//GEN-LAST:event_mnDishMouseClicked
 
     /**
      * @param args the command line arguments
@@ -286,14 +287,22 @@ public class DishesList extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(DishesList.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MejaList.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(DishesList.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MejaList.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(DishesList.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MejaList.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(DishesList.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MejaList.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -306,7 +315,7 @@ public class DishesList extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new DishesList().setVisible(true);
+                new MejaList().setVisible(true);
             }
         });
     }
@@ -314,34 +323,25 @@ public class DishesList extends javax.swing.JFrame {
     private void loadData()
     {
         try {
-            DefaultTableModel model = (DefaultTableModel) menuTableList.getModel();
+            DefaultTableModel model = (DefaultTableModel) mejaTableList.getModel();
             // clear data
             model.setRowCount(0);
-            String selectQuery = "SELECT * FROM menu";
+            String selectQuery = "SELECT * FROM meja";
             ResultSet result = statment.executeQuery(selectQuery);
             while (result.next())
             {
                 model.addRow(new Object[]
                 {
-                    result.getInt("id_menu"),
-                    result.getString("menu"),
-                    result.getString("deskripsi"),
-                    "Rp " + result.getInt("harga"),
-                    result.getString("tipe"),
-                    setStatus(result.getInt("is_available"))
+                    result.getInt("id_meja"),
+                    result.getString("no_meja"),
+                    result.getString("status"),
                 });
                 
-                menuTableList.setModel(model);
+                mejaTableList.setModel(model);
             }
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(this, ex.getMessage());
         }
-    }
-    
-    private String setStatus(int isAvailable)
-    {
-        if (isAvailable == 1) return "Available";
-        return "UnAvailable";
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -350,15 +350,15 @@ public class DishesList extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane1;
     private keeptoo.KGradientPanel kGradientPanel1;
     private javax.swing.JLabel logo;
-    private javax.swing.JTable menuTableList;
+    private javax.swing.JTable mejaTableList;
     private javax.swing.JLabel mnDashboard;
+    private javax.swing.JLabel mnDish;
+    private javax.swing.JLabel mnMeja;
     // End of variables declaration//GEN-END:variables
 }

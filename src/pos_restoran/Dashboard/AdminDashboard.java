@@ -44,7 +44,7 @@ public class AdminDashboard extends javax.swing.JFrame {
         nmDishesList = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
+        mnMeja = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         jumlahOrder = new javax.swing.JPanel();
         totalOrder = new javax.swing.JLabel();
@@ -96,11 +96,16 @@ public class AdminDashboard extends javax.swing.JFrame {
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pos_restoran/images/ic_serving-dish.png"))); // NOI18N
 
         jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pos_restoran/images/ic_boxes.png"))); // NOI18N
+        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pos_restoran/images/table.png"))); // NOI18N
 
-        jLabel8.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
-        jLabel8.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel8.setText("Stock");
+        mnMeja.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
+        mnMeja.setForeground(new java.awt.Color(255, 255, 255));
+        mnMeja.setText("Meja");
+        mnMeja.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                mnMejaMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout kGradientPanel1Layout = new javax.swing.GroupLayout(kGradientPanel1);
         kGradientPanel1.setLayout(kGradientPanel1Layout);
@@ -124,7 +129,7 @@ public class AdminDashboard extends javax.swing.JFrame {
                     .addGroup(kGradientPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel7)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jLabel8))
+                        .addComponent(mnMeja))
                     .addComponent(logo))
                 .addContainerGap(22, Short.MAX_VALUE))
         );
@@ -145,11 +150,14 @@ public class AdminDashboard extends javax.swing.JFrame {
                 .addGroup(kGradientPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel6)
                     .addComponent(nmDishesList))
-                .addGap(21, 21, 21)
                 .addGroup(kGradientPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel7)
-                    .addComponent(jLabel8))
-                .addContainerGap(317, Short.MAX_VALUE))
+                    .addGroup(kGradientPanel1Layout.createSequentialGroup()
+                        .addGap(21, 21, 21)
+                        .addComponent(jLabel7))
+                    .addGroup(kGradientPanel1Layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(mnMeja)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jLabel9.setFont(new java.awt.Font("Calibri", 0, 24)); // NOI18N
@@ -175,12 +183,12 @@ public class AdminDashboard extends javax.swing.JFrame {
 
         remainStock.setFont(new java.awt.Font("Calibri", 0, 80)); // NOI18N
         remainStock.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        remainStock.setText("50");
+        remainStock.setText("10");
         jumlahOrder1.add(remainStock, java.awt.BorderLayout.CENTER);
 
         jLabel14.setFont(new java.awt.Font("Calibri", 0, 24)); // NOI18N
         jLabel14.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel14.setText("Remain Stock");
+        jLabel14.setText("Meja");
         jumlahOrder1.add(jLabel14, java.awt.BorderLayout.PAGE_END);
 
         jumlahOrder2.setBackground(new java.awt.Color(255, 255, 255));
@@ -255,7 +263,7 @@ public class AdminDashboard extends javax.swing.JFrame {
                 .addComponent(jumlahOrder1, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(39, 39, 39)
                 .addComponent(jumlahOrder3, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(62, Short.MAX_VALUE))
         );
 
         jumlahOrder.getAccessibleContext().setAccessibleName("");
@@ -267,6 +275,10 @@ public class AdminDashboard extends javax.swing.JFrame {
     private void nmDishesListMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_nmDishesListMouseClicked
         this.menuNav.dishList(this);
     }//GEN-LAST:event_nmDishesListMouseClicked
+
+    private void mnMejaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mnMejaMouseClicked
+        menuNav.mejaList(this);
+    }//GEN-LAST:event_mnMejaMouseClicked
 
     /**
      * @param args the command line arguments
@@ -313,7 +325,6 @@ public class AdminDashboard extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jumlahOrder;
     private javax.swing.JPanel jumlahOrder1;
@@ -322,6 +333,7 @@ public class AdminDashboard extends javax.swing.JFrame {
     private keeptoo.KGradientPanel kGradientPanel1;
     private javax.swing.JLabel logo;
     private javax.swing.JLabel mnDashboard;
+    private javax.swing.JLabel mnMeja;
     private javax.swing.JLabel mnOrderList;
     private javax.swing.JLabel nmDishesList;
     private javax.swing.JLabel remainStock;

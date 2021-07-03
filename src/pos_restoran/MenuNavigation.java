@@ -10,6 +10,8 @@ import javax.swing.JFrame;
 import pos_restoran.Dashboard.AdminDashboard;
 import pos_restoran.Dishess.CreateDishes;
 import pos_restoran.Dishess.DishesList;
+import pos_restoran.Meja.CreateMeja;
+import pos_restoran.Meja.MejaList;
 
 /**
  *
@@ -23,6 +25,7 @@ public class MenuNavigation {
         current.setVisible(false);
     }
     
+    // dish application
     public void dishList(Window current){
         DishesList dishList = new DishesList();
         dishList.setVisible(true);
@@ -32,6 +35,19 @@ public class MenuNavigation {
     public void createDish(Window current){
         CreateDishes dishList = new CreateDishes();
         dishList.setVisible(true);
+        current.setVisible(false);
+    }
+    
+    // meja application
+    public void createMeja(Window current){
+        CreateMeja createMeja = new CreateMeja();
+        createMeja.setVisible(true);
+        current.setVisible(false);
+    }
+    
+    public void mejaList(Window current){
+        MejaList mejaList = new MejaList();
+        mejaList.setVisible(true);
         current.setVisible(false);
     }
     
