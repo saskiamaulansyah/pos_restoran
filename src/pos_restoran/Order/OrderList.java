@@ -5,6 +5,7 @@
  */
 package pos_restoran.Order;
 
+import java.awt.Window;
 import pos_restoran.Meja.*;
 import pos_restoran.Dishess.*;
 import java.sql.Connection;
@@ -43,9 +44,9 @@ public class OrderList extends javax.swing.JFrame {
         
         this.menuNav = new MenuNavigation();
         
-        loadData();
+        loadDataWaitingOrder();
+        LoadDataCompleteOrder();
     }
-
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -60,18 +61,18 @@ public class OrderList extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         mnDashboard = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
+        mnOrder = new javax.swing.JLabel();
         mnDish = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         mnMeja = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        mejaTableList = new javax.swing.JTable();
+        OrderWaiting = new javax.swing.JTable();
         btnReport = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        OrderComplete = new javax.swing.JTable();
         btnReport1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -98,9 +99,14 @@ public class OrderList extends javax.swing.JFrame {
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pos_restoran/images/ic_order.png"))); // NOI18N
 
-        jLabel4.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel4.setText("Order List");
+        mnOrder.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
+        mnOrder.setForeground(new java.awt.Color(255, 255, 255));
+        mnOrder.setText("Order List");
+        mnOrder.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                mnOrderMouseClicked(evt);
+            }
+        });
 
         mnDish.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
         mnDish.setForeground(new java.awt.Color(255, 255, 255));
@@ -120,6 +126,11 @@ public class OrderList extends javax.swing.JFrame {
         mnMeja.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
         mnMeja.setForeground(new java.awt.Color(255, 255, 255));
         mnMeja.setText("Meja");
+        mnMeja.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                mnMejaMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout kGradientPanel1Layout = new javax.swing.GroupLayout(kGradientPanel1);
         kGradientPanel1.setLayout(kGradientPanel1Layout);
@@ -139,7 +150,7 @@ public class OrderList extends javax.swing.JFrame {
                     .addGroup(kGradientPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel3)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jLabel4))
+                        .addComponent(mnOrder))
                     .addGroup(kGradientPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel6)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -159,7 +170,7 @@ public class OrderList extends javax.swing.JFrame {
                 .addGap(21, 21, 21)
                 .addGroup(kGradientPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel3)
-                    .addComponent(jLabel4))
+                    .addComponent(mnOrder))
                 .addGap(21, 21, 21)
                 .addGroup(kGradientPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel6)
@@ -176,38 +187,45 @@ public class OrderList extends javax.swing.JFrame {
         jLabel9.setFont(new java.awt.Font("Calibri", 0, 24)); // NOI18N
         jLabel9.setText("Order List");
 
-        mejaTableList.setModel(new javax.swing.table.DefaultTableModel(
+        OrderWaiting.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
             },
             new String [] {
-                "NO", "ID", "No Meja", "Atas Nama"
+                "NO", "No Pesanan", "Atas Nama", "No Meja", "Sub Total"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
                 return types [columnIndex];
             }
-        });
-        mejaTableList.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                mejaTableListMouseClicked(evt);
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(mejaTableList);
+        OrderWaiting.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                OrderWaitingMouseClicked(evt);
+            }
+        });
+        jScrollPane1.setViewportView(OrderWaiting);
 
         btnReport.setText("Create Report");
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel2.setText("Finish Order");
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        OrderComplete.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -226,7 +244,7 @@ public class OrderList extends javax.swing.JFrame {
                 return types [columnIndex];
             }
         });
-        jScrollPane2.setViewportView(jTable1);
+        jScrollPane2.setViewportView(OrderComplete);
 
         btnReport1.setText("Create Report");
         btnReport1.addActionListener(new java.awt.event.ActionListener() {
@@ -289,16 +307,12 @@ public class OrderList extends javax.swing.JFrame {
         menuNav.adminDashboard(this);
     }//GEN-LAST:event_mnDashboardMouseClicked
 
-    private void mejaTableListMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mejaTableListMouseClicked
-        
-        int baris = mejaTableList.rowAtPoint(evt.getPoint());
-        
-        CreateMeja createMeja = new CreateMeja();
-        createMeja.setData(mejaTableList, baris);
-        
-        menuNav.openMenuWithData(this , createMeja);
-        
-    }//GEN-LAST:event_mejaTableListMouseClicked
+    private void OrderWaitingMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_OrderWaitingMouseClicked
+       String NoPesanan = OrderWaiting.getValueAt(OrderWaiting.getSelectedRow(),1).toString();
+       new OrderDetail(NoPesanan).setVisible(true);
+       setVisible(false);
+       
+    }//GEN-LAST:event_OrderWaitingMouseClicked
 
     private void mnDishMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mnDishMouseClicked
         menuNav.dishList(this);
@@ -307,6 +321,16 @@ public class OrderList extends javax.swing.JFrame {
     private void btnReport1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReport1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnReport1ActionPerformed
+
+    private void mnOrderMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mnOrderMouseClicked
+        // TODO add your handling code here:
+        menuNav.orderList(this);
+    }//GEN-LAST:event_mnOrderMouseClicked
+
+    private void mnMejaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mnMejaMouseClicked
+        // TODO add your handling code here:
+        menuNav.mejaList(this);
+    }//GEN-LAST:event_mnMejaMouseClicked
 
     /**
      * @param args the command line arguments
@@ -406,24 +430,54 @@ public class OrderList extends javax.swing.JFrame {
         });
     }
     
-    private void loadData()
+    private void loadDataWaitingOrder()
     {
         try {
-            DefaultTableModel model = (DefaultTableModel) mejaTableList.getModel();
+            DefaultTableModel model = (DefaultTableModel) OrderWaiting.getModel();
             // clear data
+            int no = 1;
             model.setRowCount(0);
-            String selectQuery = "SELECT * FROM meja";
+            String selectQuery = "SELECT * FROM pembayaran where status = 'WAITING'";
             ResultSet result = statment.executeQuery(selectQuery);
             while (result.next())
             {
                 model.addRow(new Object[]
                 {
-                    result.getInt("id_meja"),
-                    result.getString("no_meja"),
-                    result.getString("status"),
+                    no++,
+                    result.getInt("no_pesanan"),
+                    result.getString("atas_nama"),
+                    result.getString("id_meja"),
+                    result.getString("sub_total"),
                 });
                 
-                mejaTableList.setModel(model);
+                OrderWaiting.setModel(model);
+            }
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(this, ex.getMessage());
+        }
+    }
+    
+    public void LoadDataCompleteOrder(){
+        try {
+            DefaultTableModel model = (DefaultTableModel) OrderComplete.getModel();
+            // clear data
+            model.setRowCount(0);
+            int no = 1;
+            String selectQuery = "SELECT * FROM pembayaran where status = 'COMPLETE'";
+            ResultSet result = statment.executeQuery(selectQuery);
+            while (result.next())
+            {
+                model.addRow(new Object[]
+                {
+                    no++,
+                    result.getInt("no_pesanan"),
+                    result.getString("atas_nama"),
+                    result.getString("id_meja"),
+                    result.getString("sub_total"),
+                });
+                
+                OrderComplete.setModel(model);
+                no++;
             }
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(this, ex.getMessage());
@@ -431,23 +485,23 @@ public class OrderList extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTable OrderComplete;
+    private javax.swing.JTable OrderWaiting;
     private javax.swing.JButton btnReport;
     private javax.swing.JButton btnReport1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTable jTable1;
     private keeptoo.KGradientPanel kGradientPanel1;
     private javax.swing.JLabel logo;
-    private javax.swing.JTable mejaTableList;
     private javax.swing.JLabel mnDashboard;
     private javax.swing.JLabel mnDish;
     private javax.swing.JLabel mnMeja;
+    private javax.swing.JLabel mnOrder;
     // End of variables declaration//GEN-END:variables
 }
