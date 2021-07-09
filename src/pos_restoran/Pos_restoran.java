@@ -5,6 +5,8 @@
  */
 package pos_restoran;
 
+import pos_restoran.Customer.Pemesanan_page;
+
 /**
  *
  * @author A455L
@@ -16,8 +18,8 @@ public class Pos_restoran {
      */
     public static void main(String[] args) {
         // TODO code application logic here
-        login_page login = new login_page();
-        login.setVisible(true);
+        Pemesanan_page pemesanan = new Pemesanan_page();
+        pemesanan.setVisible(true);
     }
     
 }

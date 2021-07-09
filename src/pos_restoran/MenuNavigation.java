@@ -7,11 +7,13 @@ package pos_restoran;
 
 import java.awt.Window;
 import javax.swing.JFrame;
+import pos_restoran.Customer.Pemesanan_page;
 import pos_restoran.Dashboard.AdminDashboard;
 import pos_restoran.Dishess.CreateDishes;
 import pos_restoran.Dishess.DishesList;
 import pos_restoran.Meja.CreateMeja;
 import pos_restoran.Meja.MejaList;
+import pos_restoran.login_page;
 
 /**
  *
@@ -50,7 +52,16 @@ public class MenuNavigation {
         mejaList.setVisible(true);
         current.setVisible(false);
     }
-    
+    public void loginPage(Window current){
+        login_page login = new login_page();
+        login.setVisible(true);
+        current.setVisible(false);
+    }
+     public void pemesananPage(Window current){
+        Pemesanan_page pemesanan = new Pemesanan_page();
+        pemesanan.setVisible(true);
+        current.setVisible(false);
+    }
     // redirect to other jForm with data carier
     public void openMenuWithData(Window current , JFrame nextFrame)
     {
