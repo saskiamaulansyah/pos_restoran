@@ -22,21 +22,17 @@ public class Pemesanan_page extends javax.swing.JFrame {
     /**
      * Creates new form Delivery
      */
-<<<<<<< HEAD
     private Connection con;
     private Statement statment;
+    private MenuNavigation menuNav;
     public Pemesanan_page() {
         initComponents();
+        
+        this.menuNav = new MenuNavigation();
         DbConnection DB = new DbConnection();
         DB.Connect();
         con = DB.conn;
         statment = DB.stmt;
-=======
-    private MenuNavigation menuNav;
-    public Pemesanan_page() {
-        initComponents();
-        this.menuNav = new MenuNavigation();
->>>>>>> 6480bf8c14c7197446302e7086defc7373e9a66f
     }
 
     /**
@@ -67,12 +63,8 @@ public class Pemesanan_page extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jCheckBox1 = new javax.swing.JCheckBox();
-<<<<<<< HEAD
-        sumbit_pesanan = new javax.swing.JButton();
-=======
         jButton1 = new javax.swing.JButton();
         kButton1 = new com.k33ptoo.components.KButton();
->>>>>>> 6480bf8c14c7197446302e7086defc7373e9a66f
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -111,12 +103,7 @@ public class Pemesanan_page extends javax.swing.JFrame {
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("No Meja :");
 
-<<<<<<< HEAD
-        NoMeja.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4" }));
-        kGradientPanel1.add(NoMeja, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 100, 229, 30));
-=======
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
->>>>>>> 6480bf8c14c7197446302e7086defc7373e9a66f
 
         jPanel2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255), 2));
 
@@ -131,21 +118,11 @@ public class Pemesanan_page extends javax.swing.JFrame {
             .addGap(0, 0, Short.MAX_VALUE)
         );
 
-<<<<<<< HEAD
-        kGradientPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 50, 620, -1));
-
-        NamaCustomer.addActionListener(new java.awt.event.ActionListener() {
-=======
         jTextField1.addActionListener(new java.awt.event.ActionListener() {
->>>>>>> 6480bf8c14c7197446302e7086defc7373e9a66f
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 NamaCustomerActionPerformed(evt);
             }
         });
-<<<<<<< HEAD
-        kGradientPanel1.add(NamaCustomer, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 100, 230, 30));
-=======
->>>>>>> 6480bf8c14c7197446302e7086defc7373e9a66f
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
@@ -230,18 +207,6 @@ public class Pemesanan_page extends javax.swing.JFrame {
                 .addGap(0, 134, Short.MAX_VALUE))
         );
 
-<<<<<<< HEAD
-        kGradientPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 160, 550, 260));
-
-        sumbit_pesanan.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        sumbit_pesanan.setText("Pesan");
-        sumbit_pesanan.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                sumbit_pesananActionPerformed(evt);
-            }
-        });
-        kGradientPanel1.add(sumbit_pesanan, new org.netbeans.lib.awtextra.AbsoluteConstraints(703, 453, 110, 50));
-=======
         jButton1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jButton1.setText("Pesan");
 
@@ -348,7 +313,6 @@ public class Pemesanan_page extends javax.swing.JFrame {
                 .addComponent(kButton1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(19, 19, 19))
         );
->>>>>>> 6480bf8c14c7197446302e7086defc7373e9a66f
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -372,32 +336,11 @@ public class Pemesanan_page extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jCheckBox1ActionPerformed
 
-<<<<<<< HEAD
-    private void sumbit_pesananActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sumbit_pesananActionPerformed
-        // TODO add your handling code here:
-        try {
-            String insertQuery = "INSERT INTO pemesanan VALUES ('0','"
-                    + NamaCustomer.getText() + "', "
-                    + NoMeja.getSelectedItem()+", id_menu = 1')";
-            
-            PreparedStatement prepare = con.prepareStatement(insertQuery);
-            prepare.execute();
-            JOptionPane.showMessageDialog(this, "Sukses Menyimpan Dish");
-            
-        } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(this, ex.getMessage());
-            System.err.println(ex.getMessage());
-        }
-    }//GEN-LAST:event_sumbit_pesananActionPerformed
-    
-    
-=======
     private void kButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kButton1ActionPerformed
         // TODO add your handling code here:
         this.menuNav.loginPage(this);
     }//GEN-LAST:event_kButton1ActionPerformed
 
->>>>>>> 6480bf8c14c7197446302e7086defc7373e9a66f
     /**
      * @param args the command line arguments
      */
@@ -451,11 +394,8 @@ public class Pemesanan_page extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
-<<<<<<< HEAD
-=======
     private javax.swing.JTextField jTextField1;
     private com.k33ptoo.components.KButton kButton1;
->>>>>>> 6480bf8c14c7197446302e7086defc7373e9a66f
     private keeptoo.KGradientPanel kGradientPanel1;
     private javax.swing.JLabel logo;
     private javax.swing.JLabel mnDashboard;
