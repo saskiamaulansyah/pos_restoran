@@ -5,7 +5,7 @@
  */
 package pos_restoran;
 
-import pos_restoran.Customer.Pemesanan_page;
+import pos_restoran.Customers.Pemesanan_page;
 
 /**
  *

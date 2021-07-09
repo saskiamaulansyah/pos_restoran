@@ -7,7 +7,7 @@ package pos_restoran;
 
 import java.awt.Window;
 import javax.swing.JFrame;
-import pos_restoran.Customer.Pemesanan_page;
+import pos_restoran.Customers.Pemesanan_page;
 import pos_restoran.Dashboard.AdminDashboard;
 import pos_restoran.Dishess.CreateDishes;
 import pos_restoran.Dishess.DishesList;

@@ -180,7 +180,7 @@ public class login_page extends javax.swing.JFrame {
     boolean isLogin = false;
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
         // TODO add your handling code here:
-        //String sql = "SELECT * FROM admin WHERE username='" + txtUsername.getText() + "' AND password='" + txtPassword.getText() + "'";
+        String sql = "SELECT * FROM karyawan WHERE username='" + txtUsername.getText() + "' AND password='" + txtPassword.getText() + "'";
         try {
 //            java.sql.Connection conn = (Connection) koneksi.configDB();
 //            java.sql.PreparedStatement pst = conn.prepareStatement(sql);

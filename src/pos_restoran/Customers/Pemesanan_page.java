@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package pos_restoran.Customer;
+package pos_restoran.Customers;
 
 import pos_restoran.MenuNavigation;
 
