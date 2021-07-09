@@ -38,11 +38,11 @@ public class Pemesanan_page extends javax.swing.JFrame {
         statment = DB.stmt;
         
         loadData();
+        loadDataMeja();
     }
     
     Random rand = new Random();
     int Random_No_Pesan = rand.nextInt(10000);
-    StringBuilder query = new StringBuilder("INSERT INTO detail_bayar (no_pesanan,id_menu) VALUES ");
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -108,8 +108,6 @@ public class Pemesanan_page extends javax.swing.JFrame {
         jLabel4.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("No Meja :");
-
-        NoMeja.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4" }));
 
         jPanel2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255), 2));
 
@@ -331,17 +329,30 @@ public class Pemesanan_page extends javax.swing.JFrame {
 
     private void ButtonPesanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonPesanActionPerformed
         // TODO add your handling code here:
-        createPesan();
-        createMenuPesan();
+        int noPesan = createPesan();
+        createMenuPesan(noPesan);
     }//GEN-LAST:event_ButtonPesanActionPerformed
     
-    private void createMenuPesan() {
+    private void createMenuPesan(int idPembayaran) {
         try {
-            String insertQuery = query.toString();
-                   insertQuery = insertQuery.substring(0, insertQuery.length()-1);
             
-            PreparedStatement prepare = con.prepareStatement(insertQuery);
-            prepare.execute();
+            // load selected item
+            String query = "INSERT INTO detail_bayar VALUES ('0' , ? , ?)";
+            PreparedStatement prepare = con.prepareStatement(query);
+
+            for (int i = 0; i < tableMenu.getRowCount(); i++) {
+                if (tableMenu.getValueAt(i, 4) == null) continue;
+                if (Boolean.parseBoolean(tableMenu.getValueAt(i, 4).toString()) == false)
+                {
+                    continue;
+                }
+
+                prepare.setInt(1, idPembayaran);
+                prepare.setString(2, tableMenu.getValueAt(i, 0).toString());
+                prepare.executeUpdate();
+                
+            }
+            
             JOptionPane.showMessageDialog(this, "Sukses Menyimpan Menu Pesanan");
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(this, ex.getMessage());
@@ -349,21 +360,27 @@ public class Pemesanan_page extends javax.swing.JFrame {
         }
         
     }
-    private void createPesan() {
+    private int createPesan() {
         try {
+            
             String insertQuery = "INSERT INTO pembayaran (id_bayar,id_karyawan,no_pesanan,atas_nama,id_meja) VALUES ('0','1','"
                     + Random_No_Pesan + "', '"
                     + NamaMeja.getText() + "', "
-                    + NoMeja.getSelectedItem()+ ")";
+                    + NoMeja.getItemAt(this.NoMeja.getSelectedIndex()).getId()+ ")";
             
             PreparedStatement prepare = con.prepareStatement(insertQuery);
             prepare.execute();
             System.out.println(prepare);
-            JOptionPane.showMessageDialog(this, "Sukses Menyimpan Pesanan");
+            
+            String selectQuery = "SELECT no_pesanan FROM pembayaran ORDER BY id_bayar DESC LIMIT 1";
+            ResultSet result = statment.executeQuery(selectQuery);
+            result.next();
+            return result.getInt("no_pesanan");
             
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(this, ex.getMessage());
             System.err.println(ex.getMessage());
+            return 0;
         }
     }
     
@@ -386,6 +403,22 @@ public class Pemesanan_page extends javax.swing.JFrame {
                 });
                 
                 tableMenu.setModel(model);
+            }
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(this, ex.getMessage());
+        }
+    }
+    
+    private void loadDataMeja()
+    {
+        try {
+            NoMeja.removeAllItems();
+            
+            String selectQuery = "SELECT * FROM meja WHERE status = 'available'";
+            ResultSet result = statment.executeQuery(selectQuery);
+            while (result.next())
+            {
+                NoMeja.addItem(new ListMejaDto(result.getInt("id_meja") , result.getString("no_meja")));
             }
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(this, ex.getMessage());
@@ -431,7 +464,7 @@ public class Pemesanan_page extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton ButtonPesan;
     private javax.swing.JTextField NamaMeja;
-    private javax.swing.JComboBox<String> NoMeja;
+    private javax.swing.JComboBox<ListMejaDto> NoMeja;
     private javax.swing.Box.Filler filler1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
