@@ -73,6 +73,7 @@ public class login_page extends javax.swing.JFrame {
 
         kGradientPanel1.setkEndColor(new java.awt.Color(94, 43, 22));
         kGradientPanel1.setkStartColor(new java.awt.Color(199, 139, 61));
+        kGradientPanel1.setPreferredSize(new java.awt.Dimension(848, 519));
 
         txtUsername.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(255, 255, 255)));
         txtUsername.setOpaque(false);
@@ -92,7 +93,6 @@ public class login_page extends javax.swing.JFrame {
         jLabel3.setText("Password");
 
         btnLogin.setText("Login");
-        btnLogin.setkBorderRadius(30);
         btnLogin.setkHoverEndColor(new java.awt.Color(255, 153, 102));
         btnLogin.setkHoverForeGround(new java.awt.Color(255, 255, 204));
         btnLogin.setkHoverStartColor(new java.awt.Color(255, 204, 51));
@@ -107,7 +107,7 @@ public class login_page extends javax.swing.JFrame {
         jLabel4.setText("Don't have an account yet? ");
 
         jLabel5.setForeground(new java.awt.Color(255, 204, 51));
-        jLabel5.setText("Sign Up now");
+        jLabel5.setText("Please contact your Supervisor");
         jLabel5.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabel5MouseClicked(evt);
@@ -129,30 +129,31 @@ public class login_page extends javax.swing.JFrame {
         kGradientPanel1Layout.setHorizontalGroup(
             kGradientPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(kGradientPanel1Layout.createSequentialGroup()
-                .addGap(271, 271, 271)
-                .addComponent(jLabel6)
-                .addGap(0, 0, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, kGradientPanel1Layout.createSequentialGroup()
-                .addContainerGap(174, Short.MAX_VALUE)
-                .addGroup(kGradientPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(txtUsername)
-                    .addComponent(jLabel3)
-                    .addGroup(kGradientPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel4)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel5)
-                        .addGap(82, 82, 82)
-                        .addComponent(btnLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jLabel1)
-                    .addComponent(txtPassword))
-                .addGap(209, 209, 209))
+                .addContainerGap(189, Short.MAX_VALUE)
+                .addGroup(kGradientPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, kGradientPanel1Layout.createSequentialGroup()
+                        .addGroup(kGradientPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(txtUsername)
+                            .addComponent(jLabel3)
+                            .addGroup(kGradientPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel4)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel5)
+                                .addGap(82, 82, 82)
+                                .addComponent(btnLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jLabel1)
+                            .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 484, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(175, 175, 175))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, kGradientPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel6)
+                        .addGap(313, 313, 313))))
         );
         kGradientPanel1Layout.setVerticalGroup(
             kGradientPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, kGradientPanel1Layout.createSequentialGroup()
-                .addGap(32, 32, 32)
+                .addGap(37, 37, 37)
                 .addComponent(jLabel6)
-                .addGap(54, 54, 54)
+                .addGap(58, 58, 58)
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(txtUsername, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -165,7 +166,7 @@ public class login_page extends javax.swing.JFrame {
                     .addComponent(jLabel4)
                     .addComponent(jLabel5)
                     .addComponent(btnLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(71, Short.MAX_VALUE))
+                .addContainerGap(137, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -176,7 +177,7 @@ public class login_page extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(kGradientPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(kGradientPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 482, Short.MAX_VALUE)
         );
 
         pack();
@@ -185,6 +186,8 @@ public class login_page extends javax.swing.JFrame {
     private void txtUsernameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUsernameActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtUsernameActionPerformed
+
+    
     boolean isLogin = false;
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
         // TODO add your handling code here:
@@ -198,10 +201,13 @@ public class login_page extends javax.swing.JFrame {
             if (rs.next()) {
                 if (txtUsername.getText().equals(rs.getString("username")) && txtPassword.getText().equals(rs.getString("password"))) {
                     isLogin = true;
-                    if (rs.getString("jabatan") == "Supervisor") {
-
+                    UserSession.setUserLogin(txtUsername.getText());
+                    if (rs.getString("jabatan").equals("Supervisor")) {
                         JOptionPane.showMessageDialog(null, "berhasil login");
-                        
+                        menuNav.createEmployee(this);
+                    } else {
+                        JOptionPane.showMessageDialog(null, "berhasil login");
+                        menuNav.adminDashboard(this);
                     }
                 }
             } else {
@@ -220,6 +226,7 @@ public class login_page extends javax.swing.JFrame {
 
     private void jLabel5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel5MouseClicked
         // TODO add your handling code here:
+        menuNav.pemesananPage(this);
     }//GEN-LAST:event_jLabel5MouseClicked
 
     /**

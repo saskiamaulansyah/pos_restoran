@@ -6,7 +6,7 @@
 package pos_restoran.Dashboard;
 
 import pos_restoran.MenuNavigation;
-
+import pos_restoran.UserSession;
 
 /**
  *
@@ -17,13 +17,13 @@ public class AdminDashboard extends javax.swing.JFrame {
     /**
      * Creates new form AdminDashboard
      */
-
     private MenuNavigation menuNav;
-    
+
     public AdminDashboard() {
         initComponents();
-        
         this.menuNav = new MenuNavigation();
+        String ID = UserSession.getUserLogin();
+        userLogin.setText(ID);
     }
 
     /**
@@ -59,6 +59,7 @@ public class AdminDashboard extends javax.swing.JFrame {
         totalBill = new javax.swing.JLabel();
         jLabel17 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
+        userLogin = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
@@ -82,6 +83,11 @@ public class AdminDashboard extends javax.swing.JFrame {
         mnOrderList.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
         mnOrderList.setForeground(new java.awt.Color(255, 255, 255));
         mnOrderList.setText("Order List");
+        mnOrderList.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                mnOrderListMouseClicked(evt);
+            }
+        });
 
         nmDishesList.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
         nmDishesList.setForeground(new java.awt.Color(255, 255, 255));
@@ -143,10 +149,12 @@ public class AdminDashboard extends javax.swing.JFrame {
                     .addComponent(jLabel1)
                     .addComponent(mnDashboard))
                 .addGap(21, 21, 21)
-                .addGroup(kGradientPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(kGradientPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel3)
-                    .addComponent(mnOrderList))
-                .addGap(21, 21, 21)
+                    .addGroup(kGradientPanel1Layout.createSequentialGroup()
+                        .addGap(4, 4, 4)
+                        .addComponent(mnOrderList, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(18, 18, 18)
                 .addGroup(kGradientPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel6)
                     .addComponent(nmDishesList))
@@ -157,7 +165,7 @@ public class AdminDashboard extends javax.swing.JFrame {
                     .addGroup(kGradientPanel1Layout.createSequentialGroup()
                         .addGap(18, 18, 18)
                         .addComponent(mnMeja)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(320, Short.MAX_VALUE))
         );
 
         jLabel9.setFont(new java.awt.Font("Calibri", 0, 24)); // NOI18N
@@ -220,7 +228,8 @@ public class AdminDashboard extends javax.swing.JFrame {
         jumlahOrder3.add(jLabel17);
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pos_restoran/images/ic_user.png"))); // NOI18N
-        jLabel2.setText("Admin");
+
+        userLogin.setText("jLabel4");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -245,7 +254,9 @@ public class AdminDashboard extends javax.swing.JFrame {
                         .addComponent(jLabel9)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jLabel2)
-                        .addContainerGap())))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(userLogin)
+                        .addGap(55, 55, 55))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -254,7 +265,9 @@ public class AdminDashboard extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel9)
-                    .addComponent(jLabel2))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(userLogin)
+                        .addComponent(jLabel2)))
                 .addGap(33, 33, 33)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jumlahOrder, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -279,6 +292,11 @@ public class AdminDashboard extends javax.swing.JFrame {
     private void mnMejaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mnMejaMouseClicked
         menuNav.mejaList(this);
     }//GEN-LAST:event_mnMejaMouseClicked
+
+    private void mnOrderListMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mnOrderListMouseClicked
+        // TODO add your handling code here:
+        menuNav.orderList(this);
+    }//GEN-LAST:event_mnOrderListMouseClicked
 
     /**
      * @param args the command line arguments
@@ -340,5 +358,6 @@ public class AdminDashboard extends javax.swing.JFrame {
     private javax.swing.JLabel totalBill;
     private javax.swing.JLabel totalDishes;
     private javax.swing.JLabel totalOrder;
+    private javax.swing.JLabel userLogin;
     // End of variables declaration//GEN-END:variables
 }

@@ -11,6 +11,8 @@ import pos_restoran.Customers.Pemesanan_page;
 import pos_restoran.Dashboard.AdminDashboard;
 import pos_restoran.Dishess.CreateDishes;
 import pos_restoran.Dishess.DishesList;
+import pos_restoran.Employee.CreateEmployee;
+import pos_restoran.Employee.ListEmployee;
 import pos_restoran.Meja.CreateMeja;
 import pos_restoran.Meja.MejaList;
 import pos_restoran.Order.OrderDetail;
@@ -66,7 +68,16 @@ public class MenuNavigation {
         login.setVisible(true);
         current.setVisible(false);
     }
-    
+    public void listEmployee(Window current){
+        ListEmployee listEm = new ListEmployee();
+        listEm.setVisible(true);
+        current.setVisible(false);
+    }
+    public void createEmployee(Window current){
+        CreateEmployee createEm = new CreateEmployee();
+        createEm.setVisible(true);
+        current.setVisible(false);
+    }
     public void pemesananPage(Window current){
         Pemesanan_page pemesanan = new Pemesanan_page();
         pemesanan.setVisible(true);
