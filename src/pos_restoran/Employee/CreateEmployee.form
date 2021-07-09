@@ -344,10 +344,9 @@
               <Font name="Tahoma" size="14" style="0"/>
             </Property>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-              <StringArray count="3">
-                <StringItem index="0" value="Chef"/>
-                <StringItem index="1" value="Cashier"/>
-                <StringItem index="2" value="Other"/>
+              <StringArray count="2">
+                <StringItem index="0" value="Employee"/>
+                <StringItem index="1" value="Supervisor"/>
               </StringArray>
             </Property>
           </Properties>
@@ -389,9 +388,6 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="txtPosition">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="jTextField1"/>
-          </Properties>
         </Component>
       </SubComponents>
     </Container>

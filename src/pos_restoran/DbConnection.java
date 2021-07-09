@@ -8,6 +8,7 @@ package pos_restoran;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.Statement;
 import javax.swing.JOptionPane;
 
@@ -19,6 +20,7 @@ public class DbConnection {
     public Connection conn;
     public Statement stmt;
     public PreparedStatement prepare;
+    public ResultSet rs;
     
     public void Connect()
     {
@@ -28,6 +30,7 @@ public class DbConnection {
             "jdbc:mysql://localhost/ta_alpro","root","");  
             //here sonoo is database name, root is username and password  
             stmt = conn.createStatement();
+            
         }
         catch(Exception e){ 
             JOptionPane.showMessageDialog(null, e.getMessage());

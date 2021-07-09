@@ -5,6 +5,18 @@
  */
 package pos_restoran.Employee;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import javax.swing.JOptionPane;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
+import pos_restoran.DbConnection;
+import pos_restoran.Meja.CreateMeja;
+import pos_restoran.MenuNavigation;
+
 /**
  *
  * @author A455L
@@ -14,8 +26,21 @@ public class ListEmployee extends javax.swing.JFrame {
     /**
      * Creates new form ListEmployee
      */
+    private Connection con;
+    private Statement statment;
+    private MenuNavigation menuNav;
+    private int emId;
+
     public ListEmployee() {
         initComponents();
+        DbConnection DB = new DbConnection();
+        DB.Connect();
+        con = DB.conn;
+        statment = DB.stmt;
+
+        this.menuNav = new MenuNavigation();
+
+        loadData();
     }
 
     /**
@@ -36,6 +61,10 @@ public class ListEmployee extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jLabel11 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        employeeList = new javax.swing.JTable();
+        jButton2 = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -110,21 +139,70 @@ public class ListEmployee extends javax.swing.JFrame {
 
         jLabel11.setText("Employee > List Employee");
 
+        employeeList.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null}
+            },
+            new String [] {
+                "ID Karyawan", "Username", "Password", "Nama", "Jabatan", "Alamat", "Tanggal Lahir"
+            }
+        ));
+        employeeList.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                employeeListMouseClicked(evt);
+            }
+        });
+        jScrollPane1.setViewportView(employeeList);
+
+        jButton2.setText("Edit");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+
+        jButton3.setText("Delete");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel11)
-                .addContainerGap(623, Short.MAX_VALUE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel11)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 549, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 75, Short.MAX_VALUE)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jButton2)
+                            .addComponent(jButton3))
+                        .addGap(41, 41, 41))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel11)
-                .addContainerGap(448, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(8, 8, 8)
+                        .addComponent(jButton2)
+                        .addGap(18, 18, 18)
+                        .addComponent(jButton3)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -139,11 +217,11 @@ public class ListEmployee extends javax.swing.JFrame {
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(jLabel9)
                         .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addContainerGap(13, Short.MAX_VALUE)))
+                    .addContainerGap(33, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 543, Short.MAX_VALUE)
+            .addGap(0, 551, Short.MAX_VALUE)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                     .addContainerGap()
@@ -164,6 +242,70 @@ public class ListEmployee extends javax.swing.JFrame {
     private void mnDashboard1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mnDashboard1MouseClicked
         // TODO add your handling code here:
     }//GEN-LAST:event_mnDashboard1MouseClicked
+
+    private void employeeListMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_employeeListMouseClicked
+        // TODO add your handling code here:
+        int baris = employeeList.rowAtPoint(evt.getPoint());
+
+        CreateEmployee addEm = new CreateEmployee();
+        addEm.setData(employeeList, baris);
+
+        menuNav.openMenuWithData(this , addEm);
+    }//GEN-LAST:event_employeeListMouseClicked
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+        int option = JOptionPane.showConfirmDialog(this, "Yakin ingin menghapus data");
+        if (option == 0) {
+            delete();
+        }
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void loadData() {
+        try {
+            DefaultTableModel model = (DefaultTableModel) employeeList.getModel();
+            // clear data
+            model.setRowCount(0);
+            String selectQuery = "SELECT * FROM karyawan";
+            ResultSet result = statment.executeQuery(selectQuery);
+            while (result.next()) {
+                model.addRow(new Object[]{
+                    result.getInt("id_karyawan"),
+                    result.getString("username"),
+                    result.getString("nama"),
+                    result.getString("jabatan"),
+                    result.getString("alamat"),
+                    result.getString("tgl_lahir")});
+
+                employeeList.setModel(model);
+            }
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(this, ex.getMessage());
+        }
+    }
+
+    private void delete() {
+        try {
+
+            String insertQuery = "DELETE from karyawan WHERE id_karyawan='" + emId + "'";
+
+            PreparedStatement prepare = con.prepareStatement(insertQuery);
+            prepare.execute();
+            JOptionPane.showMessageDialog(this, "Sukses Mengpus Data Karyawan");
+
+            menuNav.dishList(this);
+
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(this, ex.getMessage());
+            System.err.println(ex.getMessage());
+        }
+    }
+
+    
 
     /**
      * @param args the command line arguments
@@ -201,11 +343,15 @@ public class ListEmployee extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTable employeeList;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane jScrollPane1;
     private keeptoo.KGradientPanel kGradientPanel1;
     private javax.swing.JLabel logo;
     private javax.swing.JLabel mnDashboard;

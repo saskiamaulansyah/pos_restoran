@@ -7,6 +7,10 @@ package pos_restoran;
 
 import java.awt.CardLayout;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import javax.swing.JOptionPane;
 
 /**
@@ -18,12 +22,16 @@ public class login_page extends javax.swing.JFrame {
     /**
      * Creates new form login_page
      */
-    
     private MenuNavigation menuNav;
-    
+    private Connection con;
+    private Statement statment;
+
     public login_page() {
         initComponents();
-        
+        DbConnection DB = new DbConnection();
+        DB.Connect();
+        con = DB.conn;
+        statment = DB.stmt;
         this.menuNav = new MenuNavigation();
     }
 
@@ -180,27 +188,30 @@ public class login_page extends javax.swing.JFrame {
     boolean isLogin = false;
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
         // TODO add your handling code here:
-        String sql = "SELECT * FROM karyawan WHERE username='" + txtUsername.getText() + "' AND password='" + txtPassword.getText() + "'";
+        //private void login() {
+        String aw = "SELECT * FROM karyawan WHERE username='" + txtUsername.getText() + "' AND password='" + txtPassword.getText() + "'";
+
         try {
-//            java.sql.Connection conn = (Connection) koneksi.configDB();
-//            java.sql.PreparedStatement pst = conn.prepareStatement(sql);
-//            java.sql.Statement stm = conn.createStatement();
-//            java.sql.ResultSet rs = stm.executeQuery(sql);
-            String Username = "admin";
-            String Password = "admin";
-            //if (rs.next()) {
-                if (txtUsername.getText().equals(Username) && txtPassword.getText().equals(Password)) {
+            java.sql.PreparedStatement pst = con.prepareStatement(aw);
+            java.sql.Statement stm = con.createStatement();
+            java.sql.ResultSet rs = stm.executeQuery(aw);
+            if (rs.next()) {
+                if (txtUsername.getText().equals(rs.getString("username")) && txtPassword.getText().equals(rs.getString("password"))) {
                     isLogin = true;
-                    JOptionPane.showMessageDialog(null, "berhasil login");
-                    this.menuNav.adminDashboard(this);
-                    
-                } else {
+                    if (rs.getString("jabatan") == "Supervisor") {
+
+                        JOptionPane.showMessageDialog(null, "berhasil login");
+                        
+                    }
+                }
+            } else {
                 JOptionPane.showMessageDialog(null, "Maaf, kombinasi Username dan Password anda salah");
             }
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, e.getMessage());
         }
-        
+
+        // }
     }//GEN-LAST:event_btnLoginActionPerformed
 
     private void txtPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPasswordActionPerformed
@@ -245,6 +256,7 @@ public class login_page extends javax.swing.JFrame {
             }
         });
     }
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private com.k33ptoo.components.KButton btnLogin;

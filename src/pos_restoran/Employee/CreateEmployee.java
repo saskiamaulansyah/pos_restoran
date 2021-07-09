@@ -10,6 +10,7 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.Statement;
 import javax.swing.JOptionPane;
+import javax.swing.JTable;
 import pos_restoran.DbConnection;
 import pos_restoran.MenuNavigation;
 
@@ -25,15 +26,16 @@ public class CreateEmployee extends javax.swing.JFrame {
     private Connection con;
     private Statement statment;
     private MenuNavigation menuNav;
+    private int emId;
+
     public CreateEmployee() {
         initComponents();
-         // connection DB
+        // connection DB
         DbConnection DB = new DbConnection();
         DB.Connect();
         con = DB.conn;
         statment = DB.stmt;
-        
-        
+
         // init class
         this.menuNav = new MenuNavigation();
     }
@@ -177,7 +179,7 @@ public class CreateEmployee extends javax.swing.JFrame {
         jScrollPane1.setViewportView(txtAddress);
 
         dpPosition.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        dpPosition.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Chef", "Cashier", "Other" }));
+        dpPosition.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Employee", "Supervisor" }));
 
         jLabel16.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel16.setText("Password");
@@ -193,8 +195,6 @@ public class CreateEmployee extends javax.swing.JFrame {
         jLabel17.setText("Birth Date");
 
         txtBirth.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-
-        txtPosition.setText("jTextField1");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -407,12 +407,12 @@ public class CreateEmployee extends javax.swing.JFrame {
         try {
 
             Object position = dpPosition.getSelectedItem();
-            
+
             String insertQuery = "INSERT INTO karyawan VALUES ('0','"
                     + txtUsernameE.getText() + "', '"
                     + txtPass.getText() + "', '"
-                    + txtName.getText() +"', '"
-                    + txtPosition.getText() + "', '"
+                    + txtName.getText() + "', '"
+                    + position + "', '"
                     + txtAddress.getText() + "', '"
                     + txtBirth.getText() + "')";
 
@@ -425,6 +425,52 @@ public class CreateEmployee extends javax.swing.JFrame {
             System.err.println(ex.getMessage());
         }
     }
+
+    public void setData(JTable employeeList, int row) {
+        emId = Integer.parseInt(employeeList.getValueAt(row, 0).toString());
+
+        txtUsernameE.setText(employeeList.getValueAt(row, 1).toString());
+        txtPass.setText(employeeList.getValueAt(row, 2).toString());
+        txtName.setText(employeeList.getValueAt(row, 3).toString());
+        dpPosition.setSelectedItem(employeeList.getValueAt(row, 4).toString());
+        txtAddress.setText(employeeList.getValueAt(row, 5).toString());
+        txtBirth.setText(employeeList.getValueAt(row, 6).toString());
+
+       
+
+        btnUpdate.setVisible(true);
+        btnDelete.setVisible(true);
+
+        btnCreate.setVisible(false);
+        btnClear.setVisible(false);
+    }
+     private void update()
+    {
+        try {
+            
+            Object position = dpPosition.getSelectedItem();
+
+            String insertQuery = "UPDATE karyawan SET "
+                    + "username='" + txtUsernameE.getText() + "',"
+                    + "password='" + txtPass.getText() + "',"
+                    + "nama='" + txtName.getText() + "',"
+                    + "jabatan='" + position + "',"
+                    + "alamat='" + txtAddress.getText() + "',"
+                    + "tgl_lahir='" + txtBirth.getText() + "',"
+                    + "WHERE id_karyawan = '" + emId + "'";
+            
+            PreparedStatement prepare = con.prepareStatement(insertQuery);
+            prepare.execute();
+            JOptionPane.showMessageDialog(this, "Sukses Merubah Data Karyawan");
+            
+            System.out.println(insertQuery);
+            
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(this, ex.getMessage());
+            System.err.println(ex.getMessage());
+        }
+    }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnClear;
     private javax.swing.JButton btnCreate;
