@@ -14,6 +14,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import pos_restoran.DbConnection;
 import pos_restoran.MenuNavigation;
+import pos_restoran.UserSession;
 
 /**
  *
@@ -36,9 +37,12 @@ public class CreateEmployee extends javax.swing.JFrame {
         DB.Connect();
         con = DB.conn;
         statment = DB.stmt;
-
+        btnUpdate.setVisible(false);
+        btnDelete.setVisible(false);
         // init class
         this.menuNav = new MenuNavigation();
+        String ID = UserSession.getUserLogin();
+        userLogin.setText(ID);
     }
 
     /**
@@ -52,8 +56,6 @@ public class CreateEmployee extends javax.swing.JFrame {
 
         kGradientPanel1 = new keeptoo.KGradientPanel();
         logo = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
-        mnDashboard = new javax.swing.JLabel();
         mnDashboard1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         mnDashboard2 = new javax.swing.JLabel();
@@ -81,6 +83,8 @@ public class CreateEmployee extends javax.swing.JFrame {
         btnClear = new javax.swing.JButton();
         btnUpdate = new javax.swing.JButton();
         btnDelete = new javax.swing.JButton();
+        jLabel4 = new javax.swing.JLabel();
+        userLogin = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -89,18 +93,6 @@ public class CreateEmployee extends javax.swing.JFrame {
         kGradientPanel1.setkStartColor(new java.awt.Color(199, 139, 61));
 
         logo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pos_restoran/images/smol_logo.png"))); // NOI18N
-
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pos_restoran/images/ic_home_blong.png"))); // NOI18N
-
-        mnDashboard.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
-        mnDashboard.setForeground(new java.awt.Color(255, 255, 255));
-        mnDashboard.setText("Employee");
-        mnDashboard.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                mnDashboardMouseClicked(evt);
-            }
-        });
 
         mnDashboard1.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
         mnDashboard1.setForeground(new java.awt.Color(255, 255, 255));
@@ -139,13 +131,9 @@ public class CreateEmployee extends javax.swing.JFrame {
                         .addComponent(mnDashboard2))
                     .addComponent(logo)
                     .addGroup(kGradientPanel1Layout.createSequentialGroup()
-                        .addGroup(kGradientPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel1)
-                            .addComponent(jLabel2))
+                        .addComponent(jLabel2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(kGradientPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(mnDashboard1)
-                            .addComponent(mnDashboard))))
+                        .addComponent(mnDashboard1)))
                 .addContainerGap(22, Short.MAX_VALUE))
         );
         kGradientPanel1Layout.setVerticalGroup(
@@ -153,11 +141,7 @@ public class CreateEmployee extends javax.swing.JFrame {
             .addGroup(kGradientPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(logo)
-                .addGap(18, 18, 18)
-                .addGroup(kGradientPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1)
-                    .addComponent(mnDashboard))
-                .addGap(18, 18, 18)
+                .addGap(59, 59, 59)
                 .addGroup(kGradientPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(mnDashboard1)
                     .addComponent(jLabel2))
@@ -165,7 +149,7 @@ public class CreateEmployee extends javax.swing.JFrame {
                 .addGroup(kGradientPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(mnDashboard2)
                     .addComponent(jLabel3))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(345, Short.MAX_VALUE))
         );
 
         jLabel9.setFont(new java.awt.Font("Calibri", 0, 24)); // NOI18N
@@ -303,8 +287,18 @@ public class CreateEmployee extends javax.swing.JFrame {
         btnClear.setText("Clear");
 
         btnUpdate.setText("Update");
+        btnUpdate.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnUpdateActionPerformed(evt);
+            }
+        });
 
         btnDelete.setText("Delete");
+        btnDelete.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDeleteActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -318,7 +312,7 @@ public class CreateEmployee extends javax.swing.JFrame {
                     .addComponent(btnClear)
                     .addComponent(btnUpdate)
                     .addComponent(btnDelete))
-                .addContainerGap(91, Short.MAX_VALUE))
+                .addContainerGap(85, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -331,10 +325,14 @@ public class CreateEmployee extends javax.swing.JFrame {
                 .addComponent(btnClear)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnUpdate)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(18, 18, 18)
                 .addComponent(btnDelete)
-                .addContainerGap(54, Short.MAX_VALUE))
+                .addContainerGap(47, Short.MAX_VALUE))
         );
+
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pos_restoran/images/ic_user.png"))); // NOI18N
+
+        userLogin.setText("jLabel4");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -347,15 +345,25 @@ public class CreateEmployee extends javax.swing.JFrame {
                     .addComponent(jLabel9)
                     .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap())
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jLabel4)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(userLogin)
+                        .addGap(24, 24, 24))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(kGradientPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel9)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel9)
+                    .addComponent(userLogin)
+                    .addComponent(jLabel4))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
@@ -371,7 +379,8 @@ public class CreateEmployee extends javax.swing.JFrame {
     private void btnCreateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateActionPerformed
         create();
         // redirect to dish menu
-        this.menuNav.dishList(this);
+
+        menuNav.listEmployee(this);
     }//GEN-LAST:event_btnCreateActionPerformed
 
     private void txtNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNameActionPerformed
@@ -382,11 +391,6 @@ public class CreateEmployee extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtPassActionPerformed
 
-    private void mnDashboardMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mnDashboardMouseClicked
-
-        menuNav.createEmployee(this);
-    }//GEN-LAST:event_mnDashboardMouseClicked
-
     private void mnDashboard1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mnDashboard1MouseClicked
         // TODO add your handling code here:
         menuNav.listEmployee(this);
@@ -395,7 +399,22 @@ public class CreateEmployee extends javax.swing.JFrame {
     private void mnDashboard2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mnDashboard2MouseClicked
         // TODO add your handling code here:
         JOptionPane.showMessageDialog(null, "Logout Berhasil");
+        menuNav.loginPage(this);
     }//GEN-LAST:event_mnDashboard2MouseClicked
+
+    private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
+        // TODO add your handling code here:
+        update();
+        menuNav.listEmployee(this);
+    }//GEN-LAST:event_btnUpdateActionPerformed
+
+    private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
+        // TODO add your handling code here:
+        int option = JOptionPane.showConfirmDialog(this, "Yakin ingin menghapus data");
+        if (option == 0) {
+            delete();
+        }
+    }//GEN-LAST:event_btnDeleteActionPerformed
 
     /**
      * @param args the command line arguments
@@ -465,18 +484,16 @@ public class CreateEmployee extends javax.swing.JFrame {
         txtAddress.setText(employeeList.getValueAt(row, 5).toString());
         txtBirth.setText(employeeList.getValueAt(row, 6).toString());
 
-       
-
         btnUpdate.setVisible(true);
         btnDelete.setVisible(true);
 
         btnCreate.setVisible(false);
         btnClear.setVisible(false);
     }
-     private void update()
-    {
+
+    private void update() {
         try {
-            
+
             Object position = dpPosition.getSelectedItem();
 
             String insertQuery = "UPDATE karyawan SET "
@@ -485,28 +502,43 @@ public class CreateEmployee extends javax.swing.JFrame {
                     + "nama='" + txtName.getText() + "',"
                     + "jabatan='" + position + "',"
                     + "alamat='" + txtAddress.getText() + "',"
-                    + "tgl_lahir='" + txtBirth.getText() + "',"
+                    + "tgl_lahir='" + txtBirth.getText() + "'"
                     + "WHERE id_karyawan = '" + emId + "'";
-            
+
             PreparedStatement prepare = con.prepareStatement(insertQuery);
             prepare.execute();
             JOptionPane.showMessageDialog(this, "Sukses Merubah Data Karyawan");
-            
+
             System.out.println(insertQuery);
-            
+
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(this, ex.getMessage());
             System.err.println(ex.getMessage());
         }
     }
-    
+
+    private void delete() {
+        try {
+
+            String insertQuery = "DELETE from karyawan WHERE id_karyawan='" + emId + "'";
+
+            PreparedStatement prepare = con.prepareStatement(insertQuery);
+            prepare.execute();
+            JOptionPane.showMessageDialog(this, "Sukses Menghapus Data Karyawan");
+
+            menuNav.listEmployee(this);
+
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(this, ex.getMessage());
+            System.err.println(ex.getMessage());
+        }
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnClear;
     private javax.swing.JButton btnCreate;
     private javax.swing.JButton btnDelete;
     private javax.swing.JButton btnUpdate;
     private javax.swing.JComboBox<String> dpPosition;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
@@ -517,13 +549,13 @@ public class CreateEmployee extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private keeptoo.KGradientPanel kGradientPanel1;
     private javax.swing.JLabel logo;
-    private javax.swing.JLabel mnDashboard;
     private javax.swing.JLabel mnDashboard1;
     private javax.swing.JLabel mnDashboard2;
     private javax.swing.JTextArea txtAddress;
@@ -532,5 +564,6 @@ public class CreateEmployee extends javax.swing.JFrame {
     private javax.swing.JTextField txtPass;
     private javax.swing.JTextField txtPosition;
     private javax.swing.JTextField txtUsernameE;
+    private javax.swing.JLabel userLogin;
     // End of variables declaration//GEN-END:variables
 }
