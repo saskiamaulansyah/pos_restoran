@@ -19,7 +19,6 @@ import pos_restoran.Dashboard.*;
 import pos_restoran.DbConnection;
 import pos_restoran.MenuNavigation;
 
-
 /**
  *
  * @author User
@@ -29,23 +28,22 @@ public class OrderDetail extends javax.swing.JFrame {
     /**
      * Creates new form AdminDashboard
      */
-    
     private Connection con;
     private Statement statment;
     private MenuNavigation menuNav;
     private int mejaId, sub_total;
     private String NoPesan;
+
     public OrderDetail(String NoPesanan) {
         initComponents();
-        
+
         // connection DB
         DbConnection DB = new DbConnection();
         DB.Connect();
         con = DB.conn;
         statment = DB.stmt;
-        
+
         // init button group\
-        
         // init class
         this.menuNav = new MenuNavigation();
         NoPesananLabel.setText(NoPesanan);
@@ -53,6 +51,7 @@ public class OrderDetail extends javax.swing.JFrame {
         setItem();
         LoadMenu();
     }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -94,8 +93,7 @@ public class OrderDetail extends javax.swing.JFrame {
         NoPesananLabel = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jLabel10 = new javax.swing.JLabel();
-        btnUpdate = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
+        kButton1 = new com.k33ptoo.components.KButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
@@ -241,7 +239,7 @@ public class OrderDetail extends javax.swing.JFrame {
         jLabel14.setText("Menu");
 
         jLabel15.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel15.setText("SUB Total");
+        jLabel15.setText("Sub Total");
 
         SubTotalLabel.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         SubTotalLabel.setText("Rp. 12,000");
@@ -268,8 +266,10 @@ public class OrderDetail extends javax.swing.JFrame {
         GrandTotalLabel.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         GrandTotalLabel.setText("Rp. 12,000");
 
+        jLabel2.setForeground(new java.awt.Color(255, 153, 0));
         jLabel2.setText("No Pesanan :");
 
+        NoPesananLabel.setForeground(new java.awt.Color(255, 153, 0));
         NoPesananLabel.setText("019737292");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -279,7 +279,13 @@ public class OrderDetail extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 583, Short.MAX_VALUE)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel13)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(NoPesananLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(SubTotalLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -292,27 +298,24 @@ public class OrderDetail extends javax.swing.JFrame {
                             .addComponent(KembalianLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel18)
                             .addComponent(GrandTotalLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel20))
-                        .addGap(0, 265, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel12)
-                            .addComponent(jLabel13))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(NoPesananLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(jLabel20)
+                            .addComponent(jLabel12))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(NoPesananLabel)
-                    .addComponent(jLabel13))
-                .addGap(9, 9, 9)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel13)
+                        .addGap(9, 9, 9))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel2)
+                            .addComponent(NoPesananLabel))
+                        .addGap(18, 18, 18)))
                 .addComponent(AtasNama, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(29, 29, 29)
                 .addComponent(jLabel12)
@@ -345,14 +348,12 @@ public class OrderDetail extends javax.swing.JFrame {
 
         jLabel10.setText("Action");
 
-        btnUpdate.setText("Update");
-        btnUpdate.addActionListener(new java.awt.event.ActionListener() {
+        kButton1.setText("Bayar");
+        kButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnUpdateActionPerformed(evt);
+                kButton1ActionPerformed(evt);
             }
         });
-
-        jButton1.setText("Cetak");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -362,20 +363,17 @@ public class OrderDetail extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel10)
-                    .addComponent(btnUpdate)
-                    .addComponent(jButton1))
-                .addContainerGap(58, Short.MAX_VALUE))
+                    .addComponent(kButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(129, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel10)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnUpdate)
                 .addGap(18, 18, 18)
-                .addComponent(jButton1)
-                .addContainerGap(127, Short.MAX_VALUE))
+                .addComponent(kButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(145, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -388,7 +386,7 @@ public class OrderDetail extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(createTitle)
                     .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -403,7 +401,7 @@ public class OrderDetail extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 392, Short.MAX_VALUE))
-                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 614, Short.MAX_VALUE))
                 .addContainerGap())
         );
 
@@ -411,7 +409,7 @@ public class OrderDetail extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void mnDashboardMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mnDashboardMouseClicked
-        
+
         menuNav.adminDashboard(this);
     }//GEN-LAST:event_mnDashboardMouseClicked
 
@@ -423,17 +421,25 @@ public class OrderDetail extends javax.swing.JFrame {
         menuNav.mejaList(this);
     }//GEN-LAST:event_mnMejaMouseClicked
 
-    private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
+    private void UangBayarKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_UangBayarKeyReleased
+        // TODO add your handling code here:
+        int uang_bayar = Integer.parseInt(UangBayar.getText());
+        int kembalian = uang_bayar - sub_total;
+        KembalianLabel.setText(String.valueOf(kembalian));
+    }//GEN-LAST:event_UangBayarKeyReleased
+
+    private void kButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kButton1ActionPerformed
+        // TODO add your handling code here:
         try {
             DefaultTableModel model = (DefaultTableModel) MenuTable.getModel();
             // clear data
             int no = 1;
             model.setRowCount(0);
-            String selectQuery = "UPDATE pembayaran SET uang_bayar = '"+ UangBayar.getText()
-                    +"', kembalian = '"+ KembalianLabel.getText()
-                    +"', sub_total = '"+ sub_total 
-                    +"', grand_total = '"+ GrandTotalLabel.getText()
-                    +"', status = 'COMPLETE' where no_pesanan = '"+ NoPesan +"'";
+            String selectQuery = "UPDATE pembayaran SET uang_bayar = '" + UangBayar.getText()
+                    + "', kembalian = '" + KembalianLabel.getText()
+                    + "', sub_total = '" + sub_total
+                    + "', grand_total = '" + GrandTotalLabel.getText()
+                    + "', status = 'COMPLETE' where no_pesanan = '" + NoPesan + "'";
             PreparedStatement prepare = con.prepareStatement(selectQuery);
             prepare.execute();
             JOptionPane.showMessageDialog(this, "Sukses Merubah Data Meja");
@@ -441,23 +447,16 @@ public class OrderDetail extends javax.swing.JFrame {
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(this, ex.getMessage());
         }
-    }//GEN-LAST:event_btnUpdateActionPerformed
+    }//GEN-LAST:event_kButton1ActionPerformed
 
-    private void UangBayarKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_UangBayarKeyReleased
-        // TODO add your handling code here:
-        int uang_bayar = Integer.parseInt(UangBayar.getText());
-        int kembalian = uang_bayar - sub_total;
-        KembalianLabel.setText(String.valueOf(kembalian));
-    }//GEN-LAST:event_UangBayarKeyReleased
-    
-    private void setItem(){
-        
+    private void setItem() {
+
         try {
             DefaultTableModel model = (DefaultTableModel) MenuTable.getModel();
             // clear data
             int no = 1;
             model.setRowCount(0);
-            String selectQuery = "SELECT * FROM pembayaran where no_pesanan = '"+NoPesan+"'";
+            String selectQuery = "SELECT * FROM pembayaran where no_pesanan = '" + NoPesan + "'";
             ResultSet result = statment.executeQuery(selectQuery);
             if (result.next()) {
                 AtasNama.setText(result.getString("atas_nama"));
@@ -469,21 +468,18 @@ public class OrderDetail extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, ex.getMessage());
         }
     }
-    
-    private void LoadMenu()
-    {
+
+    private void LoadMenu() {
         sub_total = 0;
         try {
             DefaultTableModel model = (DefaultTableModel) MenuTable.getModel();
             // clear data
             int no = 1;
             model.setRowCount(0);
-            String selectQuery = "SELECT menu.menu, menu.harga FROM detail_bayar JOIN menu ON detail_bayar.id_menu = menu.id_menu WHERE no_pesanan = '"+ NoPesan +"'";
+            String selectQuery = "SELECT menu.menu, menu.harga FROM detail_bayar JOIN menu ON detail_bayar.id_menu = menu.id_menu WHERE no_pesanan = '" + NoPesan + "'";
             ResultSet result = statment.executeQuery(selectQuery);
-            while (result.next())
-            {
-                model.addRow(new Object[]
-                {
+            while (result.next()) {
+                model.addRow(new Object[]{
                     no++,
                     result.getString("Menu"),
                     result.getString("harga")
@@ -497,6 +493,7 @@ public class OrderDetail extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, ex.getMessage());
         }
     }
+
     /**
      * @param args the command line arguments
      */
@@ -594,15 +591,11 @@ public class OrderDetail extends javax.swing.JFrame {
             }
         });
     }
-    
+
     // process function
-    
-    
-    
-    private void update()
-    {
+    private void update() {
         try {
-            
+
             String status = statusGroup.getSelection().getActionCommand();
 
             String insertQuery = "UPDATE meja SET "
@@ -610,14 +603,13 @@ public class OrderDetail extends javax.swing.JFrame {
                     + "status='" + status + "'"
                     + "WHERE id_meja = '" + mejaId + "'";
             System.out.println("SQL QUERY : " + insertQuery);
-            
+
             PreparedStatement prepare = con.prepareStatement(insertQuery);
             prepare.execute();
             JOptionPane.showMessageDialog(this, "Sukses Merubah Data Meja");
-            
+
             System.out.println(insertQuery);
-            
-            
+
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(this, ex.getMessage());
             System.err.println(ex.getMessage());
@@ -633,9 +625,7 @@ public class OrderDetail extends javax.swing.JFrame {
     private javax.swing.JLabel NoPesananLabel;
     private javax.swing.JLabel SubTotalLabel;
     private javax.swing.JTextField UangBayar;
-    private javax.swing.JButton btnUpdate;
     private javax.swing.JLabel createTitle;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel12;
@@ -653,6 +643,7 @@ public class OrderDetail extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
+    private com.k33ptoo.components.KButton kButton1;
     private keeptoo.KGradientPanel kGradientPanel1;
     private javax.swing.JLabel logo;
     private javax.swing.JLabel mnDashboard;

@@ -10,9 +10,15 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.HashMap;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
+import net.sf.jasperreports.engine.JasperCompileManager;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.JasperReport;
+import net.sf.jasperreports.view.JasperViewer;
 import pos_restoran.DbConnection;
 import pos_restoran.Meja.CreateMeja;
 import pos_restoran.MenuNavigation;
@@ -167,6 +173,11 @@ public class ListEmployee extends javax.swing.JFrame {
         kButton2.setkHoverEndColor(new java.awt.Color(204, 255, 204));
         kButton2.setkHoverForeGround(new java.awt.Color(204, 255, 204));
         kButton2.setkHoverStartColor(new java.awt.Color(204, 255, 204));
+        kButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                kButton2ActionPerformed(evt);
+            }
+        });
 
         kButton3.setText("Add New");
         kButton3.setkHoverEndColor(new java.awt.Color(204, 255, 204));
@@ -284,6 +295,19 @@ public class ListEmployee extends javax.swing.JFrame {
         // TODO add your handling code here:
         menuNav.createEmployee(this);
     }//GEN-LAST:event_kButton3ActionPerformed
+
+    private void kButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kButton2ActionPerformed
+        // TODO add your handling code here:
+        try {
+            String jrxmlFile = "./src/pos_restoran/Employee/employeeReport.jrxml";
+            HashMap param = new HashMap();
+            JasperReport jspR = JasperCompileManager.compileReport(jrxmlFile);
+            JasperPrint jPrint = JasperFillManager.fillReport(jspR, param, con);
+            JasperViewer.viewReport(jPrint, false);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, e);
+        }
+    }//GEN-LAST:event_kButton2ActionPerformed
 
     private void loadData() {
         try {

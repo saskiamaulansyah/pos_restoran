@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="680" pageHeight="842" columnWidth="640" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="79010232-4cb1-4ed0-9aad-ffb9cae0b2e1">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="table">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1_TH" mode="Opaque" backcolor="#73B0E6">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1_CH" mode="Opaque" backcolor="#CFDBE6">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<subDataset name="Table Dataset 1" uuid="85c66806-46d5-46d3-9e74-85ac61e31ab1"/>
+	<subDataset name="Table Dataset 2" uuid="f09a893f-853e-442d-8436-0876f4acc450"/>
+	<subDataset name="dataset1" uuid="f56c4166-5020-4cf1-9cc2-7b495dba954b"/>
+	<queryString>
+		<![CDATA[select p.id_bayar, p.no_pesanan,d.id_menu, m.menu, p.atas_nama, p.sub_total,p.status from pembayaran p JOIN detail_bayar d ON p.no_pesanan = d.no_pesanan JOIN menu m ON d.id_menu = m.id_menu WHERE p.no_pesanan = d.no_pesanan;]]>
+	</queryString>
+	<field name="id_bayar" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="no_pesanan" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="id_menu" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="menu" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="atas_nama" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="sub_total" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="status" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="38" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="640" height="38" uuid="55a484a5-8a52-4435-9da1-c59694ba0162"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="20" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Data Transaksi]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="24" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="36" splitType="Stretch">
+			<line>
+				<reportElement x="0" y="0" width="640" height="1" uuid="2264e9a0-0975-4fa8-8e75-a989403b2ed3"/>
+			</line>
+			<staticText>
+				<reportElement x="0" y="0" width="85" height="36" uuid="1751a381-3f7b-4075-b2e8-0b80a21e6370"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ID Pesanan]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="85" y="0" width="84" height="36" uuid="51170f03-0555-4483-8374-a46d074b9fd0"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[No Pesanan]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="169" y="0" width="111" height="36" uuid="a192f188-64b6-4dc1-8e30-d38e58b9bcac"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Nama Pemesan]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="433" y="0" width="78" height="36" uuid="d90f2f4f-e281-4edb-a777-411bf94d97cc"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Sub Total]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="511" y="0" width="86" height="36" uuid="aa707735-e46f-4634-8e9c-0237a2d2b364"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Status]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="280" y="0" width="76" height="36" uuid="916c6d2c-91a9-4a7c-a467-1f54b3759abd"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ID Menu]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="356" y="0" width="77" height="36" uuid="8dea0652-2614-4b2d-a2d5-26aea1e6df68"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Nama Menu]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="39" splitType="Stretch">
+			<line>
+				<reportElement x="0" y="0" width="640" height="1" uuid="69d6e8b8-f27f-4dda-8d90-37c1c99a4ecf"/>
+			</line>
+			<textField>
+				<reportElement x="0" y="0" width="85" height="20" uuid="3b53c5c5-f1ce-4caf-9f1d-a5caf1461c6d"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{id_bayar}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="85" y="0" width="84" height="38" uuid="a81d93d7-64f6-4c41-9141-2043ddc7cda8"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{no_pesanan}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="169" y="0" width="111" height="38" uuid="df4127df-cc50-45c8-a597-f1a767a70467"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{atas_nama}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="433" y="0" width="78" height="38" uuid="4b17aa5c-77aa-41c3-8f86-86826d6337d1"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{sub_total}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="511" y="0" width="86" height="38" uuid="a81c713a-1772-49fe-852d-1d3f7ae5a283"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{status}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="279" y="0" width="77" height="38" uuid="f4091064-1ff4-4ae9-8fe2-c0e2a1629e69"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{id_menu}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="356" y="0" width="77" height="38" uuid="cf1ac5a8-062c-45d9-8e26-bd3192af2db6"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{menu}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch">
+			<line>
+				<reportElement x="0" y="0" width="640" height="1" uuid="64fc1631-80c0-4824-914e-f82f6ab88e50"/>
+			</line>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

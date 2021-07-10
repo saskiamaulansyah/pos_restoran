@@ -108,8 +108,14 @@ public class Pemesanan_page extends javax.swing.JFrame {
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("No Meja :");
 
+        NoMeja.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         NoMeja.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(255, 255, 255)));
         NoMeja.setOpaque(false);
+        NoMeja.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                NoMejaActionPerformed(evt);
+            }
+        });
 
         jPanel2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255), 2));
 
@@ -328,6 +334,10 @@ public class Pemesanan_page extends javax.swing.JFrame {
         int noPesan = createPesan();
         createMenuPesan(noPesan);
     }//GEN-LAST:event_kButton2ActionPerformed
+
+    private void NoMejaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NoMejaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_NoMejaActionPerformed
     
     private void createMenuPesan(int idPembayaran) {
         try {

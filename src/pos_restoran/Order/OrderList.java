@@ -12,12 +12,17 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.HashMap;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import net.sf.jasperreports.engine.JasperCompileManager;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.JasperReport;
+import net.sf.jasperreports.view.JasperViewer;
 import pos_restoran.Dashboard.*;
 import pos_restoran.DbConnection;
 import pos_restoran.MenuNavigation;
-
 
 /**
  *
@@ -28,25 +33,25 @@ public class OrderList extends javax.swing.JFrame {
     /**
      * Creates new form AdminDashboard
      */
-    
     private Connection con;
     private Statement statment;
     private MenuNavigation menuNav;
 
     public OrderList() {
         initComponents();
-        
+
         // connection DB
         DbConnection DB = new DbConnection();
         DB.Connect();
         con = DB.conn;
         statment = DB.stmt;
-        
+
         this.menuNav = new MenuNavigation();
-        
+
         loadDataWaitingOrder();
         LoadDataCompleteOrder();
     }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -69,11 +74,10 @@ public class OrderList extends javax.swing.JFrame {
         jLabel9 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         OrderWaiting = new javax.swing.JTable();
-        btnReport = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         OrderComplete = new javax.swing.JTable();
-        btnReport1 = new javax.swing.JButton();
+        kButton1 = new com.k33ptoo.components.KButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
@@ -220,8 +224,6 @@ public class OrderList extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(OrderWaiting);
 
-        btnReport.setText("Create Report");
-
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel2.setText("Finish Order");
 
@@ -246,10 +248,10 @@ public class OrderList extends javax.swing.JFrame {
         });
         jScrollPane2.setViewportView(OrderComplete);
 
-        btnReport1.setText("Create Report");
-        btnReport1.addActionListener(new java.awt.event.ActionListener() {
+        kButton1.setText("Cetak Report");
+        kButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnReport1ActionPerformed(evt);
+                kButton1ActionPerformed(evt);
             }
         });
 
@@ -259,27 +261,21 @@ public class OrderList extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(kGradientPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(26, 26, 26)
-                        .addComponent(jLabel2)
+                        .addComponent(jLabel9)
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 605, Short.MAX_VALUE)
+                            .addComponent(jScrollPane2)
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 605, Short.MAX_VALUE)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(btnReport1)
-                                        .addGap(0, 0, Short.MAX_VALUE))
-                                    .addComponent(jScrollPane2))
-                                .addContainerGap())
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(btnReport)
-                                    .addComponent(jLabel9))
-                                .addGap(0, 0, Short.MAX_VALUE))))))
+                                    .addComponent(jLabel2)
+                                    .addComponent(kButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(0, 0, Short.MAX_VALUE)))
+                        .addContainerGap())))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -287,15 +283,13 @@ public class OrderList extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel9)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnReport)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
+                .addGap(36, 36, 36)
+                .addComponent(kButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(66, 66, 66)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 68, Short.MAX_VALUE)
                 .addComponent(jLabel2)
-                .addGap(18, 18, 18)
-                .addComponent(btnReport1)
-                .addGap(18, 18, 18)
+                .addGap(27, 27, 27)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 272, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(118, 118, 118))
         );
@@ -308,19 +302,15 @@ public class OrderList extends javax.swing.JFrame {
     }//GEN-LAST:event_mnDashboardMouseClicked
 
     private void OrderWaitingMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_OrderWaitingMouseClicked
-       String NoPesanan = OrderWaiting.getValueAt(OrderWaiting.getSelectedRow(),1).toString();
-       new OrderDetail(NoPesanan).setVisible(true);
-       setVisible(false);
-       
+        String NoPesanan = OrderWaiting.getValueAt(OrderWaiting.getSelectedRow(), 1).toString();
+        new OrderDetail(NoPesanan).setVisible(true);
+        setVisible(false);
+
     }//GEN-LAST:event_OrderWaitingMouseClicked
 
     private void mnDishMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mnDishMouseClicked
         menuNav.dishList(this);
     }//GEN-LAST:event_mnDishMouseClicked
-
-    private void btnReport1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReport1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnReport1ActionPerformed
 
     private void mnOrderMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mnOrderMouseClicked
         // TODO add your handling code here:
@@ -331,6 +321,19 @@ public class OrderList extends javax.swing.JFrame {
         // TODO add your handling code here:
         menuNav.mejaList(this);
     }//GEN-LAST:event_mnMejaMouseClicked
+
+    private void kButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kButton1ActionPerformed
+        // TODO add your handling code here:
+        try {
+            String jrxmlFile = "./src/pos_restoran/Order/orderReport.jrxml";
+            HashMap param = new HashMap();
+            JasperReport jspR = JasperCompileManager.compileReport(jrxmlFile);
+            JasperPrint jPrint = JasperFillManager.fillReport(jspR, param, con);
+            JasperViewer.viewReport(jPrint, false);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, e);
+        }
+    }//GEN-LAST:event_kButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -429,9 +432,8 @@ public class OrderList extends javax.swing.JFrame {
             }
         });
     }
-    
-    private void loadDataWaitingOrder()
-    {
+
+    private void loadDataWaitingOrder() {
         try {
             DefaultTableModel model = (DefaultTableModel) OrderWaiting.getModel();
             // clear data
@@ -439,25 +441,22 @@ public class OrderList extends javax.swing.JFrame {
             model.setRowCount(0);
             String selectQuery = "SELECT * FROM pembayaran where status = 'WAITING'";
             ResultSet result = statment.executeQuery(selectQuery);
-            while (result.next())
-            {
-                model.addRow(new Object[]
-                {
+            while (result.next()) {
+                model.addRow(new Object[]{
                     no++,
                     result.getInt("no_pesanan"),
                     result.getString("atas_nama"),
                     result.getString("id_meja"),
-                    result.getString("sub_total"),
-                });
-                
+                    result.getString("sub_total"),});
+
                 OrderWaiting.setModel(model);
             }
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(this, ex.getMessage());
         }
     }
-    
-    public void LoadDataCompleteOrder(){
+
+    public void LoadDataCompleteOrder() {
         try {
             DefaultTableModel model = (DefaultTableModel) OrderComplete.getModel();
             // clear data
@@ -465,17 +464,14 @@ public class OrderList extends javax.swing.JFrame {
             int no = 1;
             String selectQuery = "SELECT * FROM pembayaran where status = 'COMPLETE'";
             ResultSet result = statment.executeQuery(selectQuery);
-            while (result.next())
-            {
-                model.addRow(new Object[]
-                {
+            while (result.next()) {
+                model.addRow(new Object[]{
                     no++,
                     result.getInt("no_pesanan"),
                     result.getString("atas_nama"),
                     result.getString("id_meja"),
-                    result.getString("sub_total"),
-                });
-                
+                    result.getString("sub_total"),});
+
                 OrderComplete.setModel(model);
                 no++;
             }
@@ -487,8 +483,6 @@ public class OrderList extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTable OrderComplete;
     private javax.swing.JTable OrderWaiting;
-    private javax.swing.JButton btnReport;
-    private javax.swing.JButton btnReport1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -497,6 +491,7 @@ public class OrderList extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private com.k33ptoo.components.KButton kButton1;
     private keeptoo.KGradientPanel kGradientPanel1;
     private javax.swing.JLabel logo;
     private javax.swing.JLabel mnDashboard;

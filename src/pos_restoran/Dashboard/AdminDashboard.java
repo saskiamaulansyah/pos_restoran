@@ -5,7 +5,13 @@
  */
 package pos_restoran.Dashboard;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import javax.swing.JOptionPane;
+import pos_restoran.DbConnection;
 import pos_restoran.MenuNavigation;
 import pos_restoran.UserSession;
 
@@ -19,12 +25,23 @@ public class AdminDashboard extends javax.swing.JFrame {
      * Creates new form AdminDashboard
      */
     private MenuNavigation menuNav;
+    private Connection con;
+    private Statement statment;
 
     public AdminDashboard() {
         initComponents();
         this.menuNav = new MenuNavigation();
+        // connection DB
+        DbConnection DB = new DbConnection();
+        DB.Connect();
+        con = DB.conn;
+        statment = DB.stmt;
         String ID = UserSession.getUserLogin();
         userLogin.setText(ID);
+        loadDataCount();
+        loadDataCountTable();
+        loadDataCountDishes();
+        loadDataTotalBill();
     }
 
     /**
@@ -350,6 +367,66 @@ public class AdminDashboard extends javax.swing.JFrame {
         JOptionPane.showMessageDialog(null, "Logout Berhasil");
         menuNav.loginPage(this);
     }//GEN-LAST:event_mnDashboard2MouseClicked
+    private void loadDataCount() {
+        try {
+
+            String selectQuery = "SELECT *, Count(*) as count FROM pembayaran";
+            ResultSet result = statment.executeQuery(selectQuery);
+            while (result.next()) {
+                totalOrder.setText(result.getString("count"));
+            }
+
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(this, ex.getMessage());
+            System.err.println(ex.getMessage());
+        }
+    }
+
+    private void loadDataCountDishes() {
+        try {
+
+            String selectQuery = "SELECT *, Count(*) as count FROM menu";
+            ResultSet result = statment.executeQuery(selectQuery);
+            while (result.next()) {
+                totalDishes.setText(result.getString("count"));
+            }
+
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(this, ex.getMessage());
+            System.err.println(ex.getMessage());
+        }
+    }
+
+    private void loadDataCountTable() {
+        try {
+
+            String selectQuery = "SELECT *, Count(*) as count FROM meja";
+            ResultSet result = statment.executeQuery(selectQuery);
+            while (result.next()) {
+                remainStock.setText(result.getString("count"));
+            }
+
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(this, ex.getMessage());
+            System.err.println(ex.getMessage());
+        }
+    }
+
+    private void loadDataTotalBill() {
+        try {
+
+            String selectQuery = "SELECT *, SUM(sub_total) as total FROM pembayaran";
+            ResultSet result = statment.executeQuery(selectQuery);
+            while (result.next()) {
+                totalBill.setText("Rp. "+ result.getString("total") + ",-");
+                //System.out.println(result.getString("total"));
+            }
+
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(this, ex.getMessage());
+            System.err.println(ex.getMessage());
+        }
+    }
 
     /**
      * @param args the command line arguments
