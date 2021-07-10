@@ -444,6 +444,7 @@
             </Property>
           </Properties>
           <Events>
+            <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="UangBayarKeyPressed"/>
             <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="UangBayarKeyReleased"/>
           </Events>
         </Component>
@@ -511,7 +512,8 @@
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="jLabel10" alignment="0" min="-2" max="-2" attributes="0"/>
-                      <Component id="kButton1" alignment="0" min="-2" pref="98" max="-2" attributes="0"/>
+                      <Component id="BayarButton" alignment="0" min="-2" pref="98" max="-2" attributes="0"/>
+                      <Component id="CetakStrukButton" alignment="0" min="-2" pref="98" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace pref="129" max="32767" attributes="0"/>
               </Group>
@@ -523,8 +525,10 @@
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="jLabel10" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Component id="kButton1" min="-2" pref="34" max="-2" attributes="0"/>
-                  <EmptySpace pref="145" max="32767" attributes="0"/>
+                  <Component id="BayarButton" min="-2" pref="34" max="-2" attributes="0"/>
+                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                  <Component id="CetakStrukButton" min="-2" pref="34" max="-2" attributes="0"/>
+                  <EmptySpace pref="100" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -535,12 +539,20 @@
             <Property name="text" type="java.lang.String" value="Action"/>
           </Properties>
         </Component>
-        <Component class="com.k33ptoo.components.KButton" name="kButton1">
+        <Component class="com.k33ptoo.components.KButton" name="BayarButton">
           <Properties>
             <Property name="text" type="java.lang.String" value="Bayar"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="kButton1ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BayarButtonActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="com.k33ptoo.components.KButton" name="CetakStrukButton">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Cetak"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="CetakStrukButtonActionPerformed"/>
           </Events>
         </Component>
       </SubComponents>

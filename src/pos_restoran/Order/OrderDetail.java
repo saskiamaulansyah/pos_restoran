@@ -33,7 +33,7 @@ public class OrderDetail extends javax.swing.JFrame {
     private MenuNavigation menuNav;
     private int mejaId, sub_total;
     private String NoPesan;
-
+    private boolean isBayar;
     public OrderDetail(String NoPesanan) {
         initComponents();
 
@@ -48,6 +48,7 @@ public class OrderDetail extends javax.swing.JFrame {
         this.menuNav = new MenuNavigation();
         NoPesananLabel.setText(NoPesanan);
         NoPesan = NoPesanan;
+        buttonBayarVisible(false);
         setItem();
         LoadMenu();
     }
@@ -93,7 +94,8 @@ public class OrderDetail extends javax.swing.JFrame {
         NoPesananLabel = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jLabel10 = new javax.swing.JLabel();
-        kButton1 = new com.k33ptoo.components.KButton();
+        BayarButton = new com.k33ptoo.components.KButton();
+        CetakStrukButton = new com.k33ptoo.components.KButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
@@ -249,6 +251,9 @@ public class OrderDetail extends javax.swing.JFrame {
 
         UangBayar.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         UangBayar.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                UangBayarKeyPressed(evt);
+            }
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 UangBayarKeyReleased(evt);
             }
@@ -348,10 +353,17 @@ public class OrderDetail extends javax.swing.JFrame {
 
         jLabel10.setText("Action");
 
-        kButton1.setText("Bayar");
-        kButton1.addActionListener(new java.awt.event.ActionListener() {
+        BayarButton.setText("Bayar");
+        BayarButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                kButton1ActionPerformed(evt);
+                BayarButtonActionPerformed(evt);
+            }
+        });
+
+        CetakStrukButton.setText("Cetak");
+        CetakStrukButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CetakStrukButtonActionPerformed(evt);
             }
         });
 
@@ -363,7 +375,8 @@ public class OrderDetail extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel10)
-                    .addComponent(kButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(BayarButton, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(CetakStrukButton, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(129, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
@@ -372,8 +385,10 @@ public class OrderDetail extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel10)
                 .addGap(18, 18, 18)
-                .addComponent(kButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(145, Short.MAX_VALUE))
+                .addComponent(BayarButton, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(CetakStrukButton, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(100, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -425,10 +440,22 @@ public class OrderDetail extends javax.swing.JFrame {
         // TODO add your handling code here:
         int uang_bayar = Integer.parseInt(UangBayar.getText());
         int kembalian = uang_bayar - sub_total;
-        KembalianLabel.setText(String.valueOf(kembalian));
-    }//GEN-LAST:event_UangBayarKeyReleased
+        KembalianLabel.setText("Rp " + String.valueOf(kembalian));
+        if (kembalian <= -0) {
+            KembalianLabel.setText("Rp 0,0");
+            isBayar = false;
 
-    private void kButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kButton1ActionPerformed
+        } else {
+            isBayar = true;
+        }
+        buttonBayarVisible(isBayar);
+    }//GEN-LAST:event_UangBayarKeyReleased
+    
+    private void buttonBayarVisible(boolean isBayar){
+        BayarButton.setVisible(isBayar);
+    }
+    
+    private void BayarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BayarButtonActionPerformed
         // TODO add your handling code here:
         try {
             DefaultTableModel model = (DefaultTableModel) MenuTable.getModel();
@@ -447,7 +474,16 @@ public class OrderDetail extends javax.swing.JFrame {
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(this, ex.getMessage());
         }
-    }//GEN-LAST:event_kButton1ActionPerformed
+    }//GEN-LAST:event_BayarButtonActionPerformed
+
+    private void CetakStrukButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CetakStrukButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_CetakStrukButtonActionPerformed
+
+    private void UangBayarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_UangBayarKeyPressed
+        // TODO add your handling code here:
+        System.out.println("pos_restoran.Order.OrderDetail.UangBayarKeyPressed()");
+    }//GEN-LAST:event_UangBayarKeyPressed
 
     private void setItem() {
 
@@ -618,6 +654,8 @@ public class OrderDetail extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField AtasNama;
+    private com.k33ptoo.components.KButton BayarButton;
+    private com.k33ptoo.components.KButton CetakStrukButton;
     private javax.swing.JLabel GrandTotalLabel;
     private javax.swing.JLabel KembalianLabel;
     private javax.swing.JTable MenuTable;
@@ -643,7 +681,6 @@ public class OrderDetail extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private com.k33ptoo.components.KButton kButton1;
     private keeptoo.KGradientPanel kGradientPanel1;
     private javax.swing.JLabel logo;
     private javax.swing.JLabel mnDashboard;
