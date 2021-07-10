@@ -12,9 +12,15 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.HashMap;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
+import net.sf.jasperreports.engine.JasperCompileManager;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.JasperReport;
+import net.sf.jasperreports.view.JasperViewer;
 import pos_restoran.Dashboard.*;
 import pos_restoran.DbConnection;
 import pos_restoran.MenuNavigation;
@@ -31,8 +37,8 @@ public class OrderDetail extends javax.swing.JFrame {
     private Connection con;
     private Statement statment;
     private MenuNavigation menuNav;
-    private int mejaId, sub_total;
-    private String NoPesan;
+    private int sub_total, uang_bayar, kembalian;
+    private String meja_id, NoPesan, atas_nama;
     private boolean isBayar;
     public OrderDetail(String NoPesanan) {
         initComponents();
@@ -438,8 +444,8 @@ public class OrderDetail extends javax.swing.JFrame {
 
     private void UangBayarKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_UangBayarKeyReleased
         // TODO add your handling code here:
-        int uang_bayar = Integer.parseInt(UangBayar.getText());
-        int kembalian = uang_bayar - sub_total;
+        uang_bayar = Integer.parseInt(UangBayar.getText());
+        kembalian = uang_bayar - sub_total;
         KembalianLabel.setText("Rp " + String.valueOf(kembalian));
         if (kembalian <= -0) {
             KembalianLabel.setText("Rp 0,0");
@@ -453,6 +459,10 @@ public class OrderDetail extends javax.swing.JFrame {
     
     private void buttonBayarVisible(boolean isBayar){
         BayarButton.setVisible(isBayar);
+    }
+    
+    private void ButtonCetakVisible(boolean show){
+        CetakStrukButton.setVisible(show);
     }
     
     private void BayarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BayarButtonActionPerformed
@@ -469,8 +479,8 @@ public class OrderDetail extends javax.swing.JFrame {
                     + "', status = 'COMPLETE' where no_pesanan = '" + NoPesan + "'";
             PreparedStatement prepare = con.prepareStatement(selectQuery);
             prepare.execute();
-            JOptionPane.showMessageDialog(this, "Sukses Merubah Data Meja");
-
+            
+            JOptionPane.showMessageDialog(this, "Sukses Input Pembayaran");
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(this, ex.getMessage());
         }
@@ -478,6 +488,22 @@ public class OrderDetail extends javax.swing.JFrame {
 
     private void CetakStrukButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CetakStrukButtonActionPerformed
         // TODO add your handling code here:
+        try {
+            String jrxmlFile = "./src/pos_restoran/Order/orderDetailReport.jrxml";
+            HashMap param = new HashMap();
+            param.put("NoPesanan", NoPesan);
+            param.put("AtasNama", atas_nama);
+            param.put("NoMeja", meja_id);
+            param.put("UangBayar", String.valueOf(uang_bayar));
+            param.put("SubTotal", String.valueOf(sub_total));
+            param.put("Kembalian", String.valueOf(kembalian));
+            param.put("GrandTotal", String.valueOf(sub_total));
+            JasperReport jspR = JasperCompileManager.compileReport(jrxmlFile);
+            JasperPrint jPrint = JasperFillManager.fillReport(jspR, param, con);
+            JasperViewer.viewReport(jPrint, false);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, e);
+        }
     }//GEN-LAST:event_CetakStrukButtonActionPerformed
 
     private void UangBayarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_UangBayarKeyPressed
@@ -495,9 +521,12 @@ public class OrderDetail extends javax.swing.JFrame {
             String selectQuery = "SELECT * FROM pembayaran where no_pesanan = '" + NoPesan + "'";
             ResultSet result = statment.executeQuery(selectQuery);
             if (result.next()) {
-                AtasNama.setText(result.getString("atas_nama"));
+                atas_nama = result.getString("atas_nama");
+                AtasNama.setText(atas_nama);
                 AtasNama.setEditable(false);
-                NoMeja.setText(result.getString("id_meja"));
+                
+                meja_id = result.getString("id_meja");
+                NoMeja.setText(meja_id);
                 NoMeja.setEditable(false);
             }
         } catch (SQLException ex) {
@@ -626,30 +655,6 @@ public class OrderDetail extends javax.swing.JFrame {
 //                new OrderDetail().setVisible(true);
             }
         });
-    }
-
-    // process function
-    private void update() {
-        try {
-
-            String status = statusGroup.getSelection().getActionCommand();
-
-            String insertQuery = "UPDATE meja SET "
-                    + "no_meja='" + AtasNama.getText() + "',"
-                    + "status='" + status + "'"
-                    + "WHERE id_meja = '" + mejaId + "'";
-            System.out.println("SQL QUERY : " + insertQuery);
-
-            PreparedStatement prepare = con.prepareStatement(insertQuery);
-            prepare.execute();
-            JOptionPane.showMessageDialog(this, "Sukses Merubah Data Meja");
-
-            System.out.println(insertQuery);
-
-        } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(this, ex.getMessage());
-            System.err.println(ex.getMessage());
-        }
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
