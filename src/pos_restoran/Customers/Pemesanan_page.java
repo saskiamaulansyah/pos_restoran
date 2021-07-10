@@ -376,7 +376,12 @@ public class Pemesanan_page extends javax.swing.JFrame {
             
             PreparedStatement prepare = con.prepareStatement(insertQuery);
             prepare.execute();
-            System.out.println(prepare);
+            
+            String UpdateStatusMejaQuery = "UPDATE meja SET status = 'booked' where id_meja = '"
+                    + NoMeja.getItemAt(this.NoMeja.getSelectedIndex()).getId()+ "'";
+            
+            PreparedStatement update = con.prepareStatement(UpdateStatusMejaQuery);
+            update.execute();
             
             String selectQuery = "SELECT no_pesanan FROM pembayaran ORDER BY id_bayar DESC LIMIT 1";
             ResultSet result = statment.executeQuery(selectQuery);
