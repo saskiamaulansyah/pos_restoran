@@ -5,6 +5,7 @@
  */
 package pos_restoran.Order;
 
+import com.mysql.jdbc.StringUtils;
 import pos_restoran.Dishess.*;
 import java.awt.CardLayout;
 import java.sql.Connection;
@@ -525,6 +526,14 @@ public class OrderDetail extends javax.swing.JFrame {
                 AtasNama.setText(atas_nama);
                 AtasNama.setEditable(false);
                 
+                if (result.getString("uang_bayar") != null && !result.getString("uang_bayar").isEmpty()) {
+                    uang_bayar = Integer.valueOf(result.getString("uang_bayar"));
+                    UangBayar.setText(String.valueOf(uang_bayar));
+                    UangBayar.setEditable(false);
+                    
+                    KembalianLabel.setText(result.getString("kembalian"));
+                }
+
                 meja_id = result.getString("id_meja");
                 NoMeja.setText(meja_id);
                 NoMeja.setEditable(false);
