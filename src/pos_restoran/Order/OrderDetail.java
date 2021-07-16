@@ -446,8 +446,8 @@ public class OrderDetail extends javax.swing.JFrame {
         // TODO add your handling code here:
         uang_bayar = Integer.parseInt(UangBayar.getText());
         kembalian = uang_bayar - sub_total;
-        KembalianLabel.setText("Rp " + String.valueOf(kembalian));
-        if (kembalian <= -0) {
+        KembalianLabel.setText(String.valueOf(kembalian));
+        if (kembalian < -0) {
             KembalianLabel.setText("Rp 0,0");
             isBayar = false;
 
@@ -477,6 +477,7 @@ public class OrderDetail extends javax.swing.JFrame {
                     + "', sub_total = '" + sub_total
                     + "', grand_total = '" + GrandTotalLabel.getText()
                     + "', status = 'COMPLETE' where no_pesanan = '" + NoPesan + "'";
+            
             PreparedStatement prepare = con.prepareStatement(selectQuery);
             prepare.execute();
             
@@ -508,7 +509,6 @@ public class OrderDetail extends javax.swing.JFrame {
 
     private void UangBayarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_UangBayarKeyPressed
         // TODO add your handling code here:
-        System.out.println("pos_restoran.Order.OrderDetail.UangBayarKeyPressed()");
     }//GEN-LAST:event_UangBayarKeyPressed
 
     private void setItem() {
