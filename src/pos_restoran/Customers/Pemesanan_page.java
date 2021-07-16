@@ -333,6 +333,13 @@ public class Pemesanan_page extends javax.swing.JFrame {
         // TODO add your handling code here:
         int noPesan = createPesan();
         createMenuPesan(noPesan);
+        
+        TerimakasihPage tankyou = new TerimakasihPage();
+        String noMeja = NoMeja.getItemAt(this.NoMeja.getSelectedIndex()).toString();
+        tankyou.setData(NamaMeja.getText(), noMeja);
+        this.setVisible(false);
+        tankyou.setVisible(true);
+        
     }//GEN-LAST:event_kButton2ActionPerformed
 
     private void NoMejaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NoMejaActionPerformed
