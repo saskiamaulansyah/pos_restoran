@@ -53,19 +53,18 @@ public class AdminDashboard extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        kGradientPanel1 = new keeptoo.KGradientPanel();
-        logo = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
+        kGradientPanel3 = new keeptoo.KGradientPanel();
+        logo2 = new javax.swing.JLabel();
+        jLabel19 = new javax.swing.JLabel();
         mnOrderList = new javax.swing.JLabel();
         nmDishesList = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
-        mnMeja = new javax.swing.JLabel();
-        mnDashboard2 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        kGradientPanel2 = new keeptoo.KGradientPanel();
-        mnDashboard = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
+        jLabel20 = new javax.swing.JLabel();
+        jLabel21 = new javax.swing.JLabel();
+        mnMeja2 = new javax.swing.JLabel();
+        mnDashboard4 = new javax.swing.JLabel();
+        jLabel22 = new javax.swing.JLabel();
+        mnDashboard5 = new javax.swing.JLabel();
+        jLabel23 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         jumlahOrder = new javax.swing.JPanel();
         totalOrder = new javax.swing.JLabel();
@@ -85,14 +84,14 @@ public class AdminDashboard extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
 
-        kGradientPanel1.setkEndColor(new java.awt.Color(94, 43, 22));
-        kGradientPanel1.setkGradientFocus(300);
-        kGradientPanel1.setkStartColor(new java.awt.Color(199, 139, 61));
+        kGradientPanel3.setkEndColor(new java.awt.Color(94, 43, 22));
+        kGradientPanel3.setkGradientFocus(300);
+        kGradientPanel3.setkStartColor(new java.awt.Color(199, 139, 61));
 
-        logo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pos_restoran/images/smol_logo.png"))); // NOI18N
+        logo2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pos_restoran/images/smol_logo.png"))); // NOI18N
 
-        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pos_restoran/images/ic_order.png"))); // NOI18N
+        jLabel19.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel19.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pos_restoran/images/ic_order.png"))); // NOI18N
 
         mnOrderList.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
         mnOrderList.setForeground(new java.awt.Color(255, 255, 255));
@@ -112,123 +111,103 @@ public class AdminDashboard extends javax.swing.JFrame {
             }
         });
 
-        jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pos_restoran/images/ic_serving-dish.png"))); // NOI18N
+        jLabel20.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel20.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pos_restoran/images/ic_serving-dish.png"))); // NOI18N
 
-        jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pos_restoran/images/table.png"))); // NOI18N
+        jLabel21.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel21.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pos_restoran/images/table.png"))); // NOI18N
 
-        mnMeja.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
-        mnMeja.setForeground(new java.awt.Color(255, 255, 255));
-        mnMeja.setText("Meja");
-        mnMeja.addMouseListener(new java.awt.event.MouseAdapter() {
+        mnMeja2.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
+        mnMeja2.setForeground(new java.awt.Color(255, 255, 255));
+        mnMeja2.setText("Meja");
+        mnMeja2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 mnMejaMouseClicked(evt);
             }
         });
 
-        mnDashboard2.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
-        mnDashboard2.setForeground(new java.awt.Color(255, 255, 255));
-        mnDashboard2.setText("Logout");
-        mnDashboard2.addMouseListener(new java.awt.event.MouseAdapter() {
+        mnDashboard4.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
+        mnDashboard4.setForeground(new java.awt.Color(255, 255, 255));
+        mnDashboard4.setText("Logout");
+        mnDashboard4.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 mnDashboard2MouseClicked(evt);
             }
         });
 
-        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pos_restoran/images/ic_home_blong.png"))); // NOI18N
+        jLabel22.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel22.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pos_restoran/images/ic_logout.png"))); // NOI18N
 
-        kGradientPanel2.setkEndColor(new java.awt.Color(255, 204, 102));
-        kGradientPanel2.setkStartColor(new java.awt.Color(153, 102, 0));
+        mnDashboard5.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
+        mnDashboard5.setForeground(new java.awt.Color(255, 255, 255));
+        mnDashboard5.setText("Dashboard");
 
-        mnDashboard.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
-        mnDashboard.setForeground(new java.awt.Color(255, 255, 255));
-        mnDashboard.setText("Dashboard");
+        jLabel23.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel23.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pos_restoran/images/ic_home_blong.png"))); // NOI18N
 
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pos_restoran/images/ic_home_blong.png"))); // NOI18N
-
-        javax.swing.GroupLayout kGradientPanel2Layout = new javax.swing.GroupLayout(kGradientPanel2);
-        kGradientPanel2.setLayout(kGradientPanel2Layout);
-        kGradientPanel2Layout.setHorizontalGroup(
-            kGradientPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(kGradientPanel2Layout.createSequentialGroup()
-                .addGap(25, 25, 25)
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(mnDashboard)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        kGradientPanel2Layout.setVerticalGroup(
-            kGradientPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(kGradientPanel2Layout.createSequentialGroup()
-                .addGap(14, 14, 14)
-                .addGroup(kGradientPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(mnDashboard)
-                    .addComponent(jLabel1))
-                .addContainerGap(12, Short.MAX_VALUE))
-        );
-
-        javax.swing.GroupLayout kGradientPanel1Layout = new javax.swing.GroupLayout(kGradientPanel1);
-        kGradientPanel1.setLayout(kGradientPanel1Layout);
-        kGradientPanel1Layout.setHorizontalGroup(
-            kGradientPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(kGradientPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(kGradientPanel1Layout.createSequentialGroup()
+        javax.swing.GroupLayout kGradientPanel3Layout = new javax.swing.GroupLayout(kGradientPanel3);
+        kGradientPanel3.setLayout(kGradientPanel3Layout);
+        kGradientPanel3Layout.setHorizontalGroup(
+            kGradientPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(kGradientPanel3Layout.createSequentialGroup()
                 .addGap(20, 20, 20)
-                .addGroup(kGradientPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(kGradientPanel1Layout.createSequentialGroup()
-                        .addGap(4, 4, 4)
-                        .addGroup(kGradientPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(kGradientPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel3)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(mnOrderList))
-                            .addGroup(kGradientPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel6)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(nmDishesList))))
-                    .addComponent(logo)
-                    .addGroup(kGradientPanel1Layout.createSequentialGroup()
+                .addGroup(kGradientPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(logo2)
+                    .addGroup(kGradientPanel3Layout.createSequentialGroup()
                         .addGap(2, 2, 2)
-                        .addGroup(kGradientPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(kGradientPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel4)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(mnDashboard2))
-                            .addGroup(kGradientPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel7)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(mnMeja)))))
+                        .addComponent(jLabel21)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(mnMeja2))
+                    .addGroup(kGradientPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, kGradientPanel3Layout.createSequentialGroup()
+                            .addComponent(jLabel22, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addComponent(mnDashboard4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, kGradientPanel3Layout.createSequentialGroup()
+                            .addGap(4, 4, 4)
+                            .addGroup(kGradientPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(kGradientPanel3Layout.createSequentialGroup()
+                                    .addComponent(jLabel19)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                    .addComponent(mnOrderList))
+                                .addGroup(kGradientPanel3Layout.createSequentialGroup()
+                                    .addComponent(jLabel20)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                    .addComponent(nmDishesList))
+                                .addGroup(kGradientPanel3Layout.createSequentialGroup()
+                                    .addComponent(jLabel23)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(mnDashboard5))))))
                 .addContainerGap(56, Short.MAX_VALUE))
         );
-        kGradientPanel1Layout.setVerticalGroup(
-            kGradientPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(kGradientPanel1Layout.createSequentialGroup()
+        kGradientPanel3Layout.setVerticalGroup(
+            kGradientPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(kGradientPanel3Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(logo)
-                .addGap(46, 46, 46)
-                .addComponent(kGradientPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(kGradientPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel3)
+                .addComponent(logo2)
+                .addGap(18, 18, 18)
+                .addGroup(kGradientPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel23)
+                    .addComponent(mnDashboard5))
+                .addGap(18, 18, 18)
+                .addGroup(kGradientPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel19)
                     .addComponent(mnOrderList, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(kGradientPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel6)
+                .addGroup(kGradientPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel20)
                     .addComponent(nmDishesList))
-                .addGroup(kGradientPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(kGradientPanel1Layout.createSequentialGroup()
+                .addGroup(kGradientPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(kGradientPanel3Layout.createSequentialGroup()
                         .addGap(21, 21, 21)
-                        .addComponent(jLabel7))
-                    .addGroup(kGradientPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel21))
+                    .addGroup(kGradientPanel3Layout.createSequentialGroup()
                         .addGap(18, 18, 18)
-                        .addComponent(mnMeja)))
-                .addGap(18, 18, 18)
-                .addGroup(kGradientPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(mnDashboard2)
-                    .addComponent(jLabel4))
+                        .addComponent(mnMeja2)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(kGradientPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(mnDashboard4, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel22, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -282,7 +261,7 @@ public class AdminDashboard extends javax.swing.JFrame {
         jumlahOrder3.setLayout(new java.awt.GridLayout(1, 0));
 
         totalBill.setFont(new java.awt.Font("Calibri", 0, 30)); // NOI18N
-        totalBill.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        totalBill.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         totalBill.setText("Rp.120000");
         jumlahOrder3.add(totalBill);
 
@@ -300,7 +279,7 @@ public class AdminDashboard extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(kGradientPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(kGradientPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
@@ -324,7 +303,7 @@ public class AdminDashboard extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(kGradientPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(kGradientPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -349,31 +328,36 @@ public class AdminDashboard extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void nmDishesListMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_nmDishesListMouseClicked
-        this.menuNav.dishList(this);
-    }//GEN-LAST:event_nmDishesListMouseClicked
-
-    private void mnMejaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mnMejaMouseClicked
-        menuNav.mejaList(this);
-    }//GEN-LAST:event_mnMejaMouseClicked
-
-    private void mnOrderListMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mnOrderListMouseClicked
-        // TODO add your handling code here:
-        menuNav.orderList(this);
-    }//GEN-LAST:event_mnOrderListMouseClicked
-
     private void mnDashboard2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mnDashboard2MouseClicked
         // TODO add your handling code here:
         JOptionPane.showMessageDialog(null, "Logout Berhasil");
         menuNav.loginPage(this);
     }//GEN-LAST:event_mnDashboard2MouseClicked
+
+    private void mnMejaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mnMejaMouseClicked
+        menuNav.mejaList(this);
+    }//GEN-LAST:event_mnMejaMouseClicked
+
+    private void nmDishesListMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_nmDishesListMouseClicked
+        this.menuNav.dishList(this);
+    }//GEN-LAST:event_nmDishesListMouseClicked
+
+    private void mnOrderListMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mnOrderListMouseClicked
+        // TODO add your handling code here:
+        menuNav.orderList(this);
+    }//GEN-LAST:event_mnOrderListMouseClicked
     private void loadDataCount() {
         try {
 
             String selectQuery = "SELECT *, Count(*) as count FROM pembayaran";
             ResultSet result = statment.executeQuery(selectQuery);
             while (result.next()) {
-                totalOrder.setText(result.getString("count"));
+                if (result.getString("count") != null) {
+
+                    totalOrder.setText(result.getString("count"));
+                } else {
+                    totalOrder.setText("0");
+                }
             }
 
         } catch (SQLException ex) {
@@ -388,7 +372,12 @@ public class AdminDashboard extends javax.swing.JFrame {
             String selectQuery = "SELECT *, Count(*) as count FROM menu";
             ResultSet result = statment.executeQuery(selectQuery);
             while (result.next()) {
-                totalDishes.setText(result.getString("count"));
+                if (result.getString("count") != null) {
+
+                    totalDishes.setText(result.getString("count"));
+                } else {
+                    totalOrder.setText("0");
+                }
             }
 
         } catch (SQLException ex) {
@@ -403,7 +392,13 @@ public class AdminDashboard extends javax.swing.JFrame {
             String selectQuery = "SELECT *, Count(*) as count FROM meja";
             ResultSet result = statment.executeQuery(selectQuery);
             while (result.next()) {
-                remainStock.setText(result.getString("count"));
+                if (result.getString("count") != null) {
+
+                    remainStock.setText(result.getString("count"));
+
+                } else {
+                    totalOrder.setText("0");
+                }
             }
 
         } catch (SQLException ex) {
@@ -418,7 +413,13 @@ public class AdminDashboard extends javax.swing.JFrame {
             String selectQuery = "SELECT *, SUM(sub_total) as total FROM pembayaran";
             ResultSet result = statment.executeQuery(selectQuery);
             while (result.next()) {
-                totalBill.setText("Rp. "+ result.getString("total") + ",-");
+                if (result.getString("total") != null) {
+
+                    totalBill.setText("Rp. " + result.getString("total") + ",-");
+
+                } else {
+                    totalOrder.setText("0");
+                }
                 //System.out.println(result.getString("total"));
             }
 
@@ -465,15 +466,27 @@ public class AdminDashboard extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel20;
+    private javax.swing.JLabel jLabel21;
+    private javax.swing.JLabel jLabel22;
+    private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jumlahOrder;
     private javax.swing.JPanel jumlahOrder1;
@@ -481,10 +494,21 @@ public class AdminDashboard extends javax.swing.JFrame {
     private javax.swing.JPanel jumlahOrder3;
     private keeptoo.KGradientPanel kGradientPanel1;
     private keeptoo.KGradientPanel kGradientPanel2;
+    private keeptoo.KGradientPanel kGradientPanel3;
     private javax.swing.JLabel logo;
+    private javax.swing.JLabel logo1;
+    private javax.swing.JLabel logo2;
     private javax.swing.JLabel mnDashboard;
+    private javax.swing.JLabel mnDashboard1;
     private javax.swing.JLabel mnDashboard2;
+    private javax.swing.JLabel mnDashboard3;
+    private javax.swing.JLabel mnDashboard4;
+    private javax.swing.JLabel mnDashboard5;
+    private javax.swing.JLabel mnDishes;
+    private javax.swing.JLabel mnDishes1;
     private javax.swing.JLabel mnMeja;
+    private javax.swing.JLabel mnMeja1;
+    private javax.swing.JLabel mnMeja2;
     private javax.swing.JLabel mnOrderList;
     private javax.swing.JLabel nmDishesList;
     private javax.swing.JLabel remainStock;
