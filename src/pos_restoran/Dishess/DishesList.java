@@ -104,6 +104,11 @@ public class DishesList extends javax.swing.JFrame {
         jLabel4.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Order List");
+        jLabel4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel4MouseClicked(evt);
+            }
+        });
 
         jLabel5.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
@@ -323,6 +328,11 @@ public class DishesList extends javax.swing.JFrame {
         menuNav.loginPage(this);
     }//GEN-LAST:event_mnDashboard4MouseClicked
 
+    private void jLabel4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel4MouseClicked
+        // TODO add your handling code here:
+        menuNav.orderList(this);
+    }//GEN-LAST:event_jLabel4MouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -415,8 +425,6 @@ public class DishesList extends javax.swing.JFrame {
     private javax.swing.JLabel logo;
     private javax.swing.JTable menuTableList;
     private javax.swing.JLabel mnDashboard;
-    private javax.swing.JLabel mnDashboard2;
-    private javax.swing.JLabel mnDashboard3;
     private javax.swing.JLabel mnDashboard4;
     // End of variables declaration//GEN-END:variables
 }
