@@ -500,7 +500,7 @@ public class OrderList extends javax.swing.JFrame {
                     result.getInt("no_pesanan"),
                     result.getString("atas_nama"),
                     result.getString("id_meja"),
-                    result.getString("sub_total"),});
+                    result.getString("sub_total")});
 
                 OrderWaiting.setModel(model);
             }

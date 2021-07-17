@@ -511,7 +511,11 @@ public class OrderDetail extends javax.swing.JFrame {
             
             PreparedStatement prepare = con.prepareStatement(selectQuery);
             prepare.execute();
+            String UpdateStatusMejaQuery = "UPDATE meja SET status = 'available' where id_meja = '"
+                    + NoMeja.getText()+ "'";
             
+            PreparedStatement update = con.prepareStatement(UpdateStatusMejaQuery);
+            update.execute();
             JOptionPane.showMessageDialog(this, "Sukses Input Pembayaran");
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(this, ex.getMessage());
