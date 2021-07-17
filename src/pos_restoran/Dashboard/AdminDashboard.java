@@ -267,7 +267,7 @@ public class AdminDashboard extends javax.swing.JFrame {
 
         jLabel17.setFont(new java.awt.Font("Calibri", 0, 24)); // NOI18N
         jLabel17.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel17.setText("Total Bill");
+        jLabel17.setText(" Total Bill Paid");
         jumlahOrder3.add(jLabel17);
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pos_restoran/images/ic_user.png"))); // NOI18N
@@ -465,49 +465,25 @@ public class AdminDashboard extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
-    private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
-    private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel23;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jumlahOrder;
     private javax.swing.JPanel jumlahOrder1;
     private javax.swing.JPanel jumlahOrder2;
     private javax.swing.JPanel jumlahOrder3;
-    private keeptoo.KGradientPanel kGradientPanel1;
-    private keeptoo.KGradientPanel kGradientPanel2;
     private keeptoo.KGradientPanel kGradientPanel3;
-    private javax.swing.JLabel logo;
-    private javax.swing.JLabel logo1;
     private javax.swing.JLabel logo2;
-    private javax.swing.JLabel mnDashboard;
-    private javax.swing.JLabel mnDashboard1;
-    private javax.swing.JLabel mnDashboard2;
-    private javax.swing.JLabel mnDashboard3;
     private javax.swing.JLabel mnDashboard4;
     private javax.swing.JLabel mnDashboard5;
-    private javax.swing.JLabel mnDishes;
-    private javax.swing.JLabel mnDishes1;
-    private javax.swing.JLabel mnMeja;
-    private javax.swing.JLabel mnMeja1;
     private javax.swing.JLabel mnMeja2;
     private javax.swing.JLabel mnOrderList;
     private javax.swing.JLabel nmDishesList;

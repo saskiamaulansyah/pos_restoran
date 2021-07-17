@@ -25,11 +25,20 @@ public class TerimakasihPage extends javax.swing.JFrame {
     /**
      * Creates new form Delivery
      */
+    private Connection con;
+    private Statement statment;
+
+    private MenuNavigation menuNav;
+
     public TerimakasihPage() {
         initComponents();
-        
+        DbConnection DB = new DbConnection();
+        DB.Connect();
+        con = DB.conn;
+        statment = DB.stmt;
+        this.menuNav = new MenuNavigation();
     }
-    
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -53,6 +62,7 @@ public class TerimakasihPage extends javax.swing.JFrame {
         outputMeja = new javax.swing.JLabel();
         outputNama = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -69,6 +79,11 @@ public class TerimakasihPage extends javax.swing.JFrame {
         mnDashboard.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
         mnDashboard.setForeground(new java.awt.Color(255, 255, 255));
         mnDashboard.setText("Dashboard");
+        mnDashboard.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                mnDashboardMouseClicked(evt);
+            }
+        });
 
         jLabel2.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
@@ -124,6 +139,16 @@ public class TerimakasihPage extends javax.swing.JFrame {
         jLabel8.setForeground(new java.awt.Color(255, 255, 255));
         jLabel8.setText("Mohon untuk menunggu pesanan");
 
+        jLabel6.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel6.setText("back to menu");
+        jLabel6.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(255, 255, 255)));
+        jLabel6.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel6MouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout kGradientPanel1Layout = new javax.swing.GroupLayout(kGradientPanel1);
         kGradientPanel1.setLayout(kGradientPanel1Layout);
         kGradientPanel1Layout.setHorizontalGroup(
@@ -167,7 +192,10 @@ public class TerimakasihPage extends javax.swing.JFrame {
                                         .addComponent(jLabel3))
                                     .addGroup(kGradientPanel1Layout.createSequentialGroup()
                                         .addGap(177, 177, 177)
-                                        .addComponent(jLabel8)))
+                                        .addComponent(jLabel8))
+                                    .addGroup(kGradientPanel1Layout.createSequentialGroup()
+                                        .addGap(270, 270, 270)
+                                        .addComponent(jLabel6)))
                                 .addContainerGap(200, Short.MAX_VALUE))))))
         );
         kGradientPanel1Layout.setVerticalGroup(
@@ -205,7 +233,9 @@ public class TerimakasihPage extends javax.swing.JFrame {
                         .addGap(58, 58, 58)
                         .addComponent(jLabel3)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel8)))
+                        .addComponent(jLabel8)
+                        .addGap(55, 55, 55)
+                        .addComponent(jLabel6)))
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
@@ -222,13 +252,22 @@ public class TerimakasihPage extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-    
-    public void setData(String namaMeja , String noMeja)
-    {
+
+    private void mnDashboardMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mnDashboardMouseClicked
+        // TODO add your handling code here:
+        menuNav.pemesananPage(this);
+    }//GEN-LAST:event_mnDashboardMouseClicked
+
+    private void jLabel6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel6MouseClicked
+        // TODO add your handling code here:
+        menuNav.pemesananPage(this);
+    }//GEN-LAST:event_jLabel6MouseClicked
+
+    public void setData(String namaMeja, String noMeja) {
         outputNama.setText(namaMeja);
         outputMeja.setText(noMeja);
     }
-    
+
     /**
      * @param args the command line arguments
      */
@@ -274,6 +313,7 @@ public class TerimakasihPage extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
