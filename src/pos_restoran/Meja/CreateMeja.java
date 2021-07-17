@@ -116,6 +116,11 @@ public class CreateMeja extends javax.swing.JFrame {
         jLabel4.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Order List");
+        jLabel4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel4MouseClicked(evt);
+            }
+        });
 
         mnDishes.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
         mnDishes.setForeground(new java.awt.Color(255, 255, 255));
@@ -414,6 +419,11 @@ public class CreateMeja extends javax.swing.JFrame {
         JOptionPane.showMessageDialog(null, "Logout Berhasil");
         menuNav.loginPage(this);
     }//GEN-LAST:event_mnDashboard2MouseClicked
+
+    private void jLabel4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel4MouseClicked
+        // TODO add your handling code here:
+        menuNav.orderList(this);
+    }//GEN-LAST:event_jLabel4MouseClicked
 
     /**
      * @param args the command line arguments

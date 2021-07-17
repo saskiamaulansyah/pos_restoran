@@ -271,6 +271,16 @@ public class OrderList extends javax.swing.JFrame {
                 return types [columnIndex];
             }
         });
+        OrderComplete.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                OrderCompleteMouseClicked(evt);
+            }
+        });
+        OrderComplete.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                OrderCompleteKeyPressed(evt);
+            }
+        });
         jScrollPane2.setViewportView(OrderComplete);
 
         kButton1.setText("Cetak Report");
@@ -365,6 +375,18 @@ public class OrderList extends javax.swing.JFrame {
         JOptionPane.showMessageDialog(null, "Logout Berhasil");
         menuNav.loginPage(this);
     }//GEN-LAST:event_mnDashboard2MouseClicked
+
+    private void OrderCompleteKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_OrderCompleteKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_OrderCompleteKeyPressed
+
+    private void OrderCompleteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_OrderCompleteMouseClicked
+        // TODO add your handling code here:
+        String NoPesanan = OrderComplete.getValueAt(OrderComplete.getSelectedRow(), 1).toString();
+        new OrderDetail(NoPesanan).setVisible(true);
+        setVisible(false);
+        
+    }//GEN-LAST:event_OrderCompleteMouseClicked
 
     /**
      * @param args the command line arguments

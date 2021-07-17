@@ -71,6 +71,8 @@ public class CreateDishes extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
+        mnDashboard4 = new javax.swing.JLabel();
+        jLabel17 = new javax.swing.JLabel();
         createTitle = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jLabel11 = new javax.swing.JLabel();
@@ -120,6 +122,11 @@ public class CreateDishes extends javax.swing.JFrame {
         jLabel4.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Order List");
+        jLabel4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel4MouseClicked(evt);
+            }
+        });
 
         mnDishes.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
         mnDishes.setForeground(new java.awt.Color(255, 255, 255));
@@ -144,6 +151,18 @@ public class CreateDishes extends javax.swing.JFrame {
                 jLabel8MouseClicked(evt);
             }
         });
+
+        mnDashboard4.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
+        mnDashboard4.setForeground(new java.awt.Color(255, 255, 255));
+        mnDashboard4.setText("Logout");
+        mnDashboard4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                mnDashboard4MouseClicked(evt);
+            }
+        });
+
+        jLabel17.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel17.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pos_restoran/images/ic_logout.png"))); // NOI18N
 
         javax.swing.GroupLayout kGradientPanel1Layout = new javax.swing.GroupLayout(kGradientPanel1);
         kGradientPanel1.setLayout(kGradientPanel1Layout);
@@ -170,6 +189,12 @@ public class CreateDishes extends javax.swing.JFrame {
                         .addComponent(mnDishes))
                     .addComponent(logo))
                 .addContainerGap(22, Short.MAX_VALUE))
+            .addGroup(kGradientPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(mnDashboard4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
         kGradientPanel1Layout.setVerticalGroup(
             kGradientPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -194,6 +219,10 @@ public class CreateDishes extends javax.swing.JFrame {
                         .addGap(3, 3, 3)
                         .addComponent(jLabel7))
                     .addComponent(jLabel8))
+                .addGap(18, 18, 18)
+                .addGroup(kGradientPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jLabel17, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(mnDashboard4, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -428,6 +457,17 @@ public class CreateDishes extends javax.swing.JFrame {
         menuNav.mejaList(this);
     }//GEN-LAST:event_jLabel8MouseClicked
 
+    private void jLabel4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel4MouseClicked
+        // TODO add your handling code here:
+        menuNav.orderList(this);
+    }//GEN-LAST:event_jLabel4MouseClicked
+
+    private void mnDashboard4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mnDashboard4MouseClicked
+        // TODO add your handling code here:
+        JOptionPane.showMessageDialog(null, "Logout Berhasil");
+        menuNav.loginPage(this);
+    }//GEN-LAST:event_mnDashboard4MouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -597,6 +637,7 @@ public class CreateDishes extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel6;
@@ -608,6 +649,7 @@ public class CreateDishes extends javax.swing.JFrame {
     private keeptoo.KGradientPanel kGradientPanel1;
     private javax.swing.JLabel logo;
     private javax.swing.JLabel mnDashboard;
+    private javax.swing.JLabel mnDashboard4;
     private javax.swing.JLabel mnDishes;
     private javax.swing.JTextField price;
     private javax.swing.JRadioButton rdAvailable;
