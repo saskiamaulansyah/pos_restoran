@@ -2,7 +2,7 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" isFloatColumnFooter="true" uuid="95c1e777-e818-4a0c-a41a-819b03ee36e3">
 	<property name="ireport.zoom" value="1.0"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="108"/>
+	<property name="ireport.y" value="0"/>
 	<parameter name="AtasNama" class="java.lang.String"/>
 	<parameter name="NoMeja" class="java.lang.String"/>
 	<parameter name="UangBayar" class="java.lang.String"/>
@@ -36,7 +36,7 @@
 		<band height="66" splitType="Stretch">
 			<staticText>
 				<reportElement x="208" y="0" width="139" height="20" uuid="77cb3ec5-9b5e-4032-b894-9d9e8b43a30a"/>
-				<text><![CDATA[Terima Kasih Telah Datang]]></text>
+				<text><![CDATA[Thank you for coming!]]></text>
 			</staticText>
 			<textField pattern="EEEEE dd MMMMM yyyy">
 				<reportElement x="436" y="46" width="100" height="20" uuid="c4ddb525-14b0-4cd5-8a6f-a1ba3a613a63"/>
@@ -48,19 +48,19 @@
 		<band height="115" splitType="Stretch">
 			<staticText>
 				<reportElement x="51" y="14" width="100" height="20" uuid="d01fa00c-5c48-4c6d-870e-603f98bcf235"/>
-				<text><![CDATA[Atas Nama              :]]></text>
+				<text><![CDATA[Customer]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="51" y="47" width="100" height="20" uuid="ce7574a0-0bee-4b5a-bd8c-08a98a2c5d67"/>
-				<text><![CDATA[No Meja                 :]]></text>
+				<text><![CDATA[Table]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="51" y="80" width="100" height="20" uuid="ed8befb8-0f25-403b-9a2b-31495c336c7c"/>
-				<text><![CDATA[Uang Pembayaran : ]]></text>
+				<text><![CDATA[Cash]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="347" y="14" width="71" height="20" uuid="0fa616a9-d7b1-48bf-86ed-32122225447d"/>
-				<text><![CDATA[No Pesanan :]]></text>
+				<text><![CDATA[Order ID]]></text>
 			</staticText>
 			<textField>
 				<reportElement x="169" y="14" width="100" height="20" uuid="54194ee6-5dd8-41a1-b9bc-a633f96122bc"/>
@@ -93,14 +93,14 @@
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="14"/>
 				</textElement>
-				<text><![CDATA[Nama Menu]]></text>
+				<text><![CDATA[Menu	]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="235" y="12" width="112" height="29" uuid="d7aff9d6-0854-41de-a303-32920afa104d"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="14"/>
 				</textElement>
-				<text><![CDATA[Harga]]></text>
+				<text><![CDATA[Price]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="2" y="12" width="67" height="29" uuid="104e5a46-4e34-47ba-a1f8-cd1327415b06"/>
@@ -145,7 +145,7 @@
 			</staticText>
 			<staticText>
 				<reportElement x="51" y="32" width="100" height="20" uuid="391824a0-bae4-4ede-b54f-4016a9b8b2e0"/>
-				<text><![CDATA[Kembalian	 :]]></text>
+				<text><![CDATA[Change		 :]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="51" y="66" width="100" height="20" uuid="f03f3c4e-2f11-4a43-8ebc-064454b5d156"/>
@@ -172,7 +172,7 @@
 			<staticText>
 				<reportElement x="229" y="112" width="100" height="20" uuid="daa533ef-453f-4f18-b08b-c09fde6f7376"/>
 				<textElement textAlignment="Center"/>
-				<text><![CDATA[Terima Kasih]]></text>
+				<text><![CDATA[Thank you!]]></text>
 			</staticText>
 		</band>
 	</columnFooter>

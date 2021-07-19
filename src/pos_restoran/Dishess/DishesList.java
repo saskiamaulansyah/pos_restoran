@@ -324,7 +324,7 @@ public class DishesList extends javax.swing.JFrame {
 
     private void mnDashboard4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mnDashboard4MouseClicked
         // TODO add your handling code here:
-        JOptionPane.showMessageDialog(null, "Logout Berhasil");
+        JOptionPane.showMessageDialog(null, "Logout Success");
         menuNav.loginPage(this);
     }//GEN-LAST:event_mnDashboard4MouseClicked
 

@@ -201,7 +201,7 @@ public class MejaList extends javax.swing.JFrame {
         );
 
         jLabel9.setFont(new java.awt.Font("Calibri", 0, 24)); // NOI18N
-        jLabel9.setText("Meja List");
+        jLabel9.setText("Table List");
 
         mejaTableList.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -211,7 +211,7 @@ public class MejaList extends javax.swing.JFrame {
                 {null, null, null}
             },
             new String [] {
-                "ID", "Nomor Meja", "Status"
+                "ID", "Table Number", "Status"
             }
         ) {
             Class[] types = new Class [] {
@@ -320,7 +320,7 @@ public class MejaList extends javax.swing.JFrame {
 
     private void mnDashboard2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mnDashboard2MouseClicked
         // TODO add your handling code here:
-        JOptionPane.showMessageDialog(null, "Logout Berhasil");
+        JOptionPane.showMessageDialog(null, "Logout Success");
         menuNav.loginPage(this);
     }//GEN-LAST:event_mnDashboard2MouseClicked
 

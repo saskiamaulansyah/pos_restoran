@@ -80,7 +80,7 @@
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Calibri" size="24" style="0"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="List Employee"/>
+        <Property name="text" type="java.lang.String" value=" Employee List"/>
       </Properties>
     </Component>
     <Container class="keeptoo.KGradientPanel" name="kGradientPanel1">
@@ -157,7 +157,7 @@
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="List Employee"/>
+            <Property name="text" type="java.lang.String" value="Employee List"/>
           </Properties>
           <Events>
             <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="mnDashboard1MouseClicked"/>
@@ -260,13 +260,13 @@
                 <Property name="autoCreateRowSorter" type="boolean" value="true"/>
                 <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
                   <Table columnCount="7" rowCount="4">
-                    <Column editable="true" title="ID Karyawan" type="java.lang.Object"/>
+                    <Column editable="true" title="Employee ID" type="java.lang.Object"/>
                     <Column editable="true" title="Username" type="java.lang.Object"/>
                     <Column editable="true" title="Password" type="java.lang.Object"/>
-                    <Column editable="true" title="Nama" type="java.lang.Object"/>
-                    <Column editable="true" title="Jabatan" type="java.lang.Object"/>
-                    <Column editable="true" title="Alamat" type="java.lang.Object"/>
-                    <Column editable="true" title="Tanggal Lahir" type="java.lang.Object"/>
+                    <Column editable="true" title="Full Name" type="java.lang.Object"/>
+                    <Column editable="true" title="Position" type="java.lang.Object"/>
+                    <Column editable="true" title="Address" type="java.lang.Object"/>
+                    <Column editable="true" title="Date of Birth" type="java.lang.Object"/>
                   </Table>
                 </Property>
                 <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">

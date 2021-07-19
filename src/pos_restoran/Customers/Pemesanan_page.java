@@ -106,7 +106,7 @@ public class Pemesanan_page extends javax.swing.JFrame {
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel4.setText("No Meja :");
+        jLabel4.setText("Table :");
 
         NoMeja.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         NoMeja.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(255, 255, 255)));
@@ -132,7 +132,7 @@ public class Pemesanan_page extends javax.swing.JFrame {
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel5.setText("Nama    : ");
+        jLabel5.setText("Name :");
 
         tableMenu.setAutoCreateRowSorter(true);
         tableMenu.setBackground(new java.awt.Color(255, 255, 153));
@@ -144,7 +144,7 @@ public class Pemesanan_page extends javax.swing.JFrame {
                 {null, null, null, null, null}
             },
             new String [] {
-                "ID Menu", "Nama Menu", "Harga", "Tipe", "Order"
+                "ID Menu", "Menu", "Price", "Type", "Order"
             }
         ) {
             Class[] types = new Class [] {
@@ -171,7 +171,7 @@ public class Pemesanan_page extends javax.swing.JFrame {
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
-        kButton2.setText("Pesan");
+        kButton2.setText("Order");
         kButton2.setkEndColor(new java.awt.Color(204, 102, 0));
         kButton2.setkStartColor(new java.awt.Color(255, 204, 102));
         kButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -366,7 +366,7 @@ public class Pemesanan_page extends javax.swing.JFrame {
                 
             }
             
-            JOptionPane.showMessageDialog(this, "Sukses Menyimpan Menu Pesanan");
+            JOptionPane.showMessageDialog(this, "Order Success!");
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(this, ex.getMessage());
             System.err.println(ex.getMessage());

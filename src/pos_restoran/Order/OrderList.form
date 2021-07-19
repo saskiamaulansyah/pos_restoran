@@ -302,10 +302,10 @@
           <Properties>
             <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
               <Table columnCount="5" rowCount="4">
-                <Column editable="false" title="NO" type="java.lang.Integer"/>
-                <Column editable="false" title="No Pesanan" type="java.lang.String"/>
-                <Column editable="false" title="Atas Nama" type="java.lang.String"/>
-                <Column editable="false" title="No Meja" type="java.lang.String"/>
+                <Column editable="false" title="No" type="java.lang.Integer"/>
+                <Column editable="false" title="Order ID" type="java.lang.String"/>
+                <Column editable="false" title="Cust Name" type="java.lang.String"/>
+                <Column editable="false" title="Table" type="java.lang.String"/>
                 <Column editable="false" title="Sub Total" type="java.lang.Integer"/>
               </Table>
             </Property>
@@ -368,9 +368,9 @@
             <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
               <Table columnCount="4" rowCount="4">
                 <Column editable="true" title="No" type="java.lang.Integer"/>
-                <Column editable="true" title="ID" type="java.lang.String"/>
-                <Column editable="true" title="Meja" type="java.lang.String"/>
-                <Column editable="true" title="Atas Nama" type="java.lang.String"/>
+                <Column editable="true" title="Order ID" type="java.lang.String"/>
+                <Column editable="true" title="Table" type="java.lang.String"/>
+                <Column editable="true" title="Cust Name" type="java.lang.String"/>
               </Table>
             </Property>
             <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
@@ -410,7 +410,7 @@
     </Container>
     <Component class="com.k33ptoo.components.KButton" name="kButton1">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Cetak Report"/>
+        <Property name="text" type="java.lang.String" value="Print Transactions Report"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="kButton1ActionPerformed"/>

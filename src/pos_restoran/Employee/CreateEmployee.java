@@ -387,7 +387,7 @@ public class CreateEmployee extends javax.swing.JFrame {
 
     private void mnDashboard2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mnDashboard2MouseClicked
         // TODO add your handling code here:
-        JOptionPane.showMessageDialog(null, "Logout Berhasil");
+        JOptionPane.showMessageDialog(null, "Logout Success");
         menuNav.loginPage(this);
     }//GEN-LAST:event_mnDashboard2MouseClicked
 
@@ -411,7 +411,7 @@ public class CreateEmployee extends javax.swing.JFrame {
 
     private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
         // TODO add your handling code here:
-        int option = JOptionPane.showConfirmDialog(this, "Yakin ingin menghapus data");
+        int option = JOptionPane.showConfirmDialog(this, "Are you sure delete this data?");
         if (option == 0) {
             delete();
         }
@@ -467,7 +467,7 @@ public class CreateEmployee extends javax.swing.JFrame {
 
             PreparedStatement prepare = con.prepareStatement(insertQuery);
             prepare.execute();
-            JOptionPane.showMessageDialog(this, "Sukses Menyimpan Karyawan");
+            JOptionPane.showMessageDialog(this, "Employee Added");
 
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(this, ex.getMessage());
@@ -508,7 +508,7 @@ public class CreateEmployee extends javax.swing.JFrame {
 
             PreparedStatement prepare = con.prepareStatement(insertQuery);
             prepare.execute();
-            JOptionPane.showMessageDialog(this, "Sukses Merubah Data Karyawan");
+            JOptionPane.showMessageDialog(this, "Employee Updated");
 
             System.out.println(insertQuery);
 
@@ -525,7 +525,7 @@ public class CreateEmployee extends javax.swing.JFrame {
 
             PreparedStatement prepare = con.prepareStatement(insertQuery);
             prepare.execute();
-            JOptionPane.showMessageDialog(this, "Sukses Menghapus Data Karyawan");
+            JOptionPane.showMessageDialog(this, "Delete Success");
 
             menuNav.listEmployee(this);
 

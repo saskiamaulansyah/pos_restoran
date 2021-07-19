@@ -104,7 +104,7 @@ public class TerimakasihPage extends javax.swing.JFrame {
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel4.setText("No Meja :");
+        jLabel4.setText("Table No.");
 
         jPanel2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255), 2));
 
@@ -121,11 +121,11 @@ public class TerimakasihPage extends javax.swing.JFrame {
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel5.setText("Nama    : ");
+        jLabel5.setText("Customer : ");
 
         jLabel3.setFont(new java.awt.Font("Dialog", 1, 36)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel3.setText("TERIMAKASIH");
+        jLabel3.setText("THANK YOU!");
 
         outputMeja.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         outputMeja.setForeground(new java.awt.Color(255, 255, 255));
@@ -137,7 +137,7 @@ public class TerimakasihPage extends javax.swing.JFrame {
 
         jLabel8.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel8.setText("Mohon untuk menunggu pesanan");
+        jLabel8.setText("Please wait for your orders...");
 
         jLabel6.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
@@ -163,7 +163,7 @@ public class TerimakasihPage extends javax.swing.JFrame {
                         .addComponent(jLabel1)
                         .addGap(18, 18, 18)
                         .addComponent(mnDashboard)))
-                .addGap(18, 25, Short.MAX_VALUE)
+                .addGap(18, 36, Short.MAX_VALUE)
                 .addGroup(kGradientPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(kGradientPanel1Layout.createSequentialGroup()
@@ -188,15 +188,14 @@ public class TerimakasihPage extends javax.swing.JFrame {
                                         .addGap(27, 27, 27)
                                         .addComponent(filler1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addGroup(kGradientPanel1Layout.createSequentialGroup()
-                                        .addGap(185, 185, 185)
-                                        .addComponent(jLabel3))
-                                    .addGroup(kGradientPanel1Layout.createSequentialGroup()
-                                        .addGap(177, 177, 177)
-                                        .addComponent(jLabel8))
-                                    .addGroup(kGradientPanel1Layout.createSequentialGroup()
                                         .addGap(270, 270, 270)
-                                        .addComponent(jLabel6)))
-                                .addContainerGap(200, Short.MAX_VALUE))))))
+                                        .addComponent(jLabel6))
+                                    .addGroup(kGradientPanel1Layout.createSequentialGroup()
+                                        .addGap(185, 185, 185)
+                                        .addGroup(kGradientPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jLabel8)
+                                            .addComponent(jLabel3))))
+                                .addContainerGap(221, Short.MAX_VALUE))))))
         );
         kGradientPanel1Layout.setVerticalGroup(
             kGradientPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

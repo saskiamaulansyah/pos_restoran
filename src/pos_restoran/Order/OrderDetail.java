@@ -246,10 +246,10 @@ public class OrderDetail extends javax.swing.JFrame {
         AtasNama.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
 
         jLabel12.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel12.setText("Nomor Meja");
+        jLabel12.setText("Table");
 
         jLabel13.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel13.setText("Atas Nama");
+        jLabel13.setText("Customer");
 
         NoMeja.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
 
@@ -261,7 +261,7 @@ public class OrderDetail extends javax.swing.JFrame {
                 {null, null, null}
             },
             new String [] {
-                "No", "Menu", "Harga"
+                "No", "Menu", "Price"
             }
         ) {
             Class[] types = new Class [] {
@@ -284,7 +284,7 @@ public class OrderDetail extends javax.swing.JFrame {
         SubTotalLabel.setText("Rp. 12,000");
 
         jLabel16.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel16.setText("Uang Bayar");
+        jLabel16.setText("Cash");
 
         UangBayar.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         UangBayar.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -297,7 +297,7 @@ public class OrderDetail extends javax.swing.JFrame {
         });
 
         jLabel18.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel18.setText("Kembalian");
+        jLabel18.setText("Change");
 
         KembalianLabel.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         KembalianLabel.setText("Rp. 0,0");
@@ -309,7 +309,7 @@ public class OrderDetail extends javax.swing.JFrame {
         GrandTotalLabel.setText("Rp. 12,000");
 
         jLabel2.setForeground(new java.awt.Color(255, 153, 0));
-        jLabel2.setText("No Pesanan :");
+        jLabel2.setText("Order ID :");
 
         NoPesananLabel.setForeground(new java.awt.Color(255, 153, 0));
         NoPesananLabel.setText("019737292");
@@ -390,14 +390,14 @@ public class OrderDetail extends javax.swing.JFrame {
 
         jLabel10.setText("Action");
 
-        BayarButton.setText("Bayar");
+        BayarButton.setText("Pay");
         BayarButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BayarButtonActionPerformed(evt);
             }
         });
 
-        CetakStrukButton.setText("Cetak");
+        CetakStrukButton.setText("Print Receipt");
         CetakStrukButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 CetakStrukButtonActionPerformed(evt);
@@ -516,7 +516,7 @@ public class OrderDetail extends javax.swing.JFrame {
             
             PreparedStatement update = con.prepareStatement(UpdateStatusMejaQuery);
             update.execute();
-            JOptionPane.showMessageDialog(this, "Sukses Input Pembayaran");
+            JOptionPane.showMessageDialog(this, "Payment Success");
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(this, ex.getMessage());
         }
@@ -548,7 +548,7 @@ public class OrderDetail extends javax.swing.JFrame {
 
     private void mnDashboard2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mnDashboard2MouseClicked
         // TODO add your handling code here:
-        JOptionPane.showMessageDialog(null, "Logout Berhasil");
+        JOptionPane.showMessageDialog(null, "Logout Success");
         menuNav.loginPage(this);
     }//GEN-LAST:event_mnDashboard2MouseClicked
 

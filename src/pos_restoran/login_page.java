@@ -223,15 +223,15 @@ public class login_page extends javax.swing.JFrame {
                     isLogin = true;
                     UserSession.setUserLogin(txtUsername.getText());
                     if (rs.getString("jabatan").equals("Supervisor")) {
-                        JOptionPane.showMessageDialog(null, "berhasil login");
+                        JOptionPane.showMessageDialog(null, "Success Login");
                         menuNav.createEmployee(this);
                     } else {
-                        JOptionPane.showMessageDialog(null, "berhasil login");
+                        JOptionPane.showMessageDialog(null, "Success Login");
                         menuNav.adminDashboard(this);
                     }
                 }
             } else {
-                JOptionPane.showMessageDialog(null, "Maaf, kombinasi Username dan Password anda salah");
+                JOptionPane.showMessageDialog(null, "Invalid Username/Password!");
             }
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, e.getMessage());

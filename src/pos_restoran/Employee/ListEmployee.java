@@ -83,7 +83,7 @@ public class ListEmployee extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel9.setFont(new java.awt.Font("Calibri", 0, 24)); // NOI18N
-        jLabel9.setText("List Employee");
+        jLabel9.setText(" Employee List");
 
         kGradientPanel1.setkEndColor(new java.awt.Color(94, 43, 22));
         kGradientPanel1.setkGradientFocus(300);
@@ -93,7 +93,7 @@ public class ListEmployee extends javax.swing.JFrame {
 
         mnDashboard1.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
         mnDashboard1.setForeground(new java.awt.Color(255, 255, 255));
-        mnDashboard1.setText("List Employee");
+        mnDashboard1.setText("Employee List");
         mnDashboard1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 mnDashboard1MouseClicked(evt);
@@ -165,7 +165,7 @@ public class ListEmployee extends javax.swing.JFrame {
                 {null, null, null, null, null, null, null}
             },
             new String [] {
-                "ID Karyawan", "Username", "Password", "Nama", "Jabatan", "Alamat", "Tanggal Lahir"
+                "Employee ID", "Username", "Password", "Full Name", "Position", "Address", "Date of Birth"
             }
         ));
         employeeList.setGridColor(new java.awt.Color(255, 255, 255));
@@ -294,7 +294,7 @@ public class ListEmployee extends javax.swing.JFrame {
 
     private void mnDashboard2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mnDashboard2MouseClicked
         // TODO add your handling code here:
-        JOptionPane.showMessageDialog(null, "Logout Berhasil");
+        JOptionPane.showMessageDialog(null, "Logout Success");
         menuNav.loginPage(this);
     }//GEN-LAST:event_mnDashboard2MouseClicked
 
@@ -348,7 +348,7 @@ public class ListEmployee extends javax.swing.JFrame {
 
             PreparedStatement prepare = con.prepareStatement(insertQuery);
             prepare.execute();
-            JOptionPane.showMessageDialog(this, "Sukses Mengpus Data Karyawan");
+            JOptionPane.showMessageDialog(this, "Delete Success");
 
             menuNav.dishList(this);
 

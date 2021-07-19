@@ -80,7 +80,7 @@
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="20" isBold="true"/>
 				</textElement>
-				<text><![CDATA[Data Karyawan]]></text>
+				<text><![CDATA[Employee Data]]></text>
 			</staticText>
 		</band>
 	</title>
@@ -97,35 +97,35 @@
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="12" isBold="true"/>
 				</textElement>
-				<text><![CDATA[ID Karyawan]]></text>
+				<text><![CDATA[Employee ID]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="100" y="0" width="116" height="36" uuid="51170f03-0555-4483-8374-a46d074b9fd0"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="12" isBold="true"/>
 				</textElement>
-				<text><![CDATA[Nama Karyawan]]></text>
+				<text><![CDATA[Full Name]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="216" y="0" width="127" height="36" uuid="a192f188-64b6-4dc1-8e30-d38e58b9bcac"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="12" isBold="true"/>
 				</textElement>
-				<text><![CDATA[Alamat]]></text>
+				<text><![CDATA[Address	]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="343" y="0" width="126" height="36" uuid="09c6269e-20a5-45e7-a378-7b3c93a3cbc9"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="12" isBold="true"/>
 				</textElement>
-				<text><![CDATA[Tanggal Lahir]]></text>
+				<text><![CDATA[Date of Birth]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="469" y="0" width="55" height="36" uuid="72284192-af80-4b5d-886c-032fc2e33931"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="12" isBold="true"/>
 				</textElement>
-				<text><![CDATA[Jabatan]]></text>
+				<text><![CDATA[Position]]></text>
 			</staticText>
 		</band>
 	</columnHeader>

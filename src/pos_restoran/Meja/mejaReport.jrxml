@@ -68,7 +68,7 @@
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="20" isBold="true"/>
 				</textElement>
-				<text><![CDATA[Data Meja]]></text>
+				<text><![CDATA[Table Data]]></text>
 			</staticText>
 		</band>
 	</title>
@@ -85,14 +85,14 @@
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="12" isBold="true"/>
 				</textElement>
-				<text><![CDATA[ID Meja]]></text>
+				<text><![CDATA[Table ID]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="100" y="0" width="116" height="36" uuid="51170f03-0555-4483-8374-a46d074b9fd0"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="12" isBold="true"/>
 				</textElement>
-				<text><![CDATA[No Meja]]></text>
+				<text><![CDATA[Table Number]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="216" y="0" width="127" height="36" uuid="a192f188-64b6-4dc1-8e30-d38e58b9bcac"/>

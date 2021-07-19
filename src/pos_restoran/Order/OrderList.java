@@ -224,7 +224,7 @@ public class OrderList extends javax.swing.JFrame {
                 {null, null, null, null, null}
             },
             new String [] {
-                "NO", "No Pesanan", "Atas Nama", "No Meja", "Sub Total"
+                "No", "Order ID", "Cust Name", "Table", "Sub Total"
             }
         ) {
             Class[] types = new Class [] {
@@ -260,7 +260,7 @@ public class OrderList extends javax.swing.JFrame {
                 {null, null, null, null}
             },
             new String [] {
-                "No", "ID", "Meja", "Atas Nama"
+                "No", "Order ID", "Table", "Cust Name"
             }
         ) {
             Class[] types = new Class [] {
@@ -283,7 +283,7 @@ public class OrderList extends javax.swing.JFrame {
         });
         jScrollPane2.setViewportView(OrderComplete);
 
-        kButton1.setText("Cetak Report");
+        kButton1.setText("Print Transactions Report");
         kButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 kButton1ActionPerformed(evt);
@@ -372,7 +372,7 @@ public class OrderList extends javax.swing.JFrame {
 
     private void mnDashboard2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mnDashboard2MouseClicked
         // TODO add your handling code here:
-        JOptionPane.showMessageDialog(null, "Logout Berhasil");
+        JOptionPane.showMessageDialog(null, "Logout Success");
         menuNav.loginPage(this);
     }//GEN-LAST:event_mnDashboard2MouseClicked
 

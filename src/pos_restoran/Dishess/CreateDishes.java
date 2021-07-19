@@ -231,18 +231,18 @@ public class CreateDishes extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
-        jLabel11.setText("Form Dish");
+        jLabel11.setText("Dish > Create Dish");
 
         dishName.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
 
         jLabel12.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel12.setText("Nama Hidangan");
+        jLabel12.setText("Dish Name");
 
         jLabel13.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel13.setText("Deskripsi");
+        jLabel13.setText("Description");
 
         jLabel14.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel14.setText("Harga");
+        jLabel14.setText("Price");
 
         price.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
 
@@ -445,7 +445,7 @@ public class CreateDishes extends javax.swing.JFrame {
     }//GEN-LAST:event_btnUpdateActionPerformed
 
     private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
-        int option = JOptionPane.showConfirmDialog(this, "Yakin ingin menghapus data");
+        int option = JOptionPane.showConfirmDialog(this, "Are you sure delete this data?");
         if (option == 0)
         {
             delete();
@@ -464,7 +464,7 @@ public class CreateDishes extends javax.swing.JFrame {
 
     private void mnDashboard4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mnDashboard4MouseClicked
         // TODO add your handling code here:
-        JOptionPane.showMessageDialog(null, "Logout Berhasil");
+        JOptionPane.showMessageDialog(null, "Success Logout");
         menuNav.loginPage(this);
     }//GEN-LAST:event_mnDashboard4MouseClicked
 
@@ -567,7 +567,7 @@ public class CreateDishes extends javax.swing.JFrame {
             
             PreparedStatement prepare = con.prepareStatement(insertQuery);
             prepare.execute();
-            JOptionPane.showMessageDialog(this, "Sukses Menyimpan Dish");
+            JOptionPane.showMessageDialog(this, "Dish Added");
             
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(this, ex.getMessage());
@@ -595,7 +595,7 @@ public class CreateDishes extends javax.swing.JFrame {
             
             PreparedStatement prepare = con.prepareStatement(insertQuery);
             prepare.execute();
-            JOptionPane.showMessageDialog(this, "Sukses Merubah Data Dish");
+            JOptionPane.showMessageDialog(this, "Dish Updated");
             
             System.out.println(insertQuery);
             
@@ -613,7 +613,7 @@ public class CreateDishes extends javax.swing.JFrame {
             
             PreparedStatement prepare = con.prepareStatement(insertQuery);
             prepare.execute();
-            JOptionPane.showMessageDialog(this, "Sukses Mengpus Data");
+            JOptionPane.showMessageDialog(this, "Delete Success");
                         
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(this, ex.getMessage());

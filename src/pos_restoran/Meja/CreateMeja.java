@@ -222,16 +222,16 @@ public class CreateMeja extends javax.swing.JFrame {
         );
 
         createTitle.setFont(new java.awt.Font("Calibri", 0, 24)); // NOI18N
-        createTitle.setText("Create Meja");
+        createTitle.setText("Create Table");
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
-        jLabel11.setText("Form Meja");
+        jLabel11.setText("Table > Create Table");
 
         noMeja.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
 
         jLabel12.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel12.setText("Nomor Meja");
+        jLabel12.setText("Table");
 
         rdAvailable.setText("Available");
         rdAvailable.addActionListener(new java.awt.event.ActionListener() {
@@ -403,7 +403,7 @@ public class CreateMeja extends javax.swing.JFrame {
     }//GEN-LAST:event_btnUpdateActionPerformed
 
     private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
-        int option = JOptionPane.showConfirmDialog(this, "Yakin ingin menghapus data");
+        int option = JOptionPane.showConfirmDialog(this, "Are you sure delete this data?");
         if (option == 0)
         {
             delete();
@@ -416,7 +416,7 @@ public class CreateMeja extends javax.swing.JFrame {
 
     private void mnDashboard2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mnDashboard2MouseClicked
         // TODO add your handling code here:
-        JOptionPane.showMessageDialog(null, "Logout Berhasil");
+        JOptionPane.showMessageDialog(null, "Logout Success");
         menuNav.loginPage(this);
     }//GEN-LAST:event_mnDashboard2MouseClicked
 
@@ -532,7 +532,7 @@ public class CreateMeja extends javax.swing.JFrame {
             
             PreparedStatement prepare = con.prepareStatement(insertQuery);
             prepare.execute();
-            JOptionPane.showMessageDialog(this, "Sukses Menyimpan Data Meja");
+            JOptionPane.showMessageDialog(this, "Table Added");
             
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(this, ex.getMessage());
@@ -556,7 +556,7 @@ public class CreateMeja extends javax.swing.JFrame {
             
             PreparedStatement prepare = con.prepareStatement(insertQuery);
             prepare.execute();
-            JOptionPane.showMessageDialog(this, "Sukses Merubah Data Meja");
+            JOptionPane.showMessageDialog(this, "Table Updated");
             
             System.out.println(insertQuery);
             
@@ -575,7 +575,7 @@ public class CreateMeja extends javax.swing.JFrame {
             
             PreparedStatement prepare = con.prepareStatement(insertQuery);
             prepare.execute();
-            JOptionPane.showMessageDialog(this, "Sukses Mengpus Data Meja");
+            JOptionPane.showMessageDialog(this, "Delete Success");
             
             menuNav.dishList(this);
             
